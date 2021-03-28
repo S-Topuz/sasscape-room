@@ -1,4 +1,58 @@
-body, pre
-	background-color: blue
-	font-family: "Roboto Mono"
-	color: white
+*:root
+	--width: 300px
+	--height: 300px
+
+html, body
+	height: 100%
+	width: 100%
+	margin: 0
+	padding: 0
+
+	overflow: hidden
+
+body
+	display: flex
+	justify-content: center
+	align-items: center
+	background-color: #222
+
+	font-family: "SF Pro Display"
+
+// -----------------------------
+
+// container
+.container
+	position: relative
+	
+	width: var(--width)
+	height: var(--height)
+	background-color: #eee
+
+// scene properties
+.scene
+	width: var(--width)
+	height: var(--height)
+
+	position: absolute
+	top: 300px
+	opacity: 0
+
+	transition: all .5s ease
+
+// scene switcher
+.scene-radio
+	display: none
+
+.scene-radio:checked + .scene
+	opacity: 1
+	top: 0
+
+// game label
+.intro-label,
+.instruction-label,
+.scene-1-label
+	display: block
+	margin: 8px
+
+// -----------------------------
+

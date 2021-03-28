@@ -1,33 +1,46 @@
-/*
-Errno::EACCES: Permission denied @ apply2files - .sass-cache/7099c8b3b1aafec646ca851a93ac6ffbeb32d306/main.sassc
+*:root {
+  --width: 300px;
+  --height: 300px; }
 
-Backtrace:
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/filesystem.rb:26:in `unlink'
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/filesystem.rb:26:in `_retrieve'
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/base.rb:63:in `retrieve'
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/chain.rb:25:in `block in retrieve'
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/chain.rb:24:in `each'
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/chain.rb:24:in `each_with_index'
-/usr/lib/ruby/vendor_ruby/sass/cache_stores/chain.rb:24:in `retrieve'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:399:in `_to_tree'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:381:in `_render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:298:in `render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:473:in `on_file_changed'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:331:in `block in watch'
-/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:115:in `_process_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:19:in `block in loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:84:in `_wait_for_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:42:in `block in setup'
-/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Errno::EACCES: Permission denied @ apply2files - .sass-cache/7099c8b3b1aafec646ca851a93ac6ffbeb32d306/main.sassc"; }
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  font-family: "SF Pro Display"; }
+
+.container {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  background-color: #eee; }
+
+.scene {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  top: 300px;
+  opacity: 0;
+  transition: all 0.5s ease; }
+
+.scene-radio {
+  display: none; }
+
+.scene-radio:checked + .scene {
+  opacity: 1;
+  top: 0; }
+
+.intro-label,
+.instruction-label,
+.scene-1-label {
+  display: block;
+  margin: 8px; }
+
+/*# sourceMappingURL=main.css.map */

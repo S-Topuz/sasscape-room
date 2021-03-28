@@ -6,9 +6,52 @@
 	<link rel="stylesheet" href="dist/css/main.css">
 </head>
 <body>
-	<pre><code>Hello, world!
+	<div class="container">
+		<!-- introduction -->
+		<input type="radio"
+					 name="scene"
+					 class="scene-radio"
+					 id="intro" 
+					 checked />
+	
+		<label class="scene intro"
+					 for="instruction">
+			<label class="intro-label">
+				Escape room
+			</label>
 
-This is a text for escape room.
-	</code></pre>
+			<label class="intro-label">
+				Click anywhere to begin
+			</label>
+		</label>
+
+		<!-- instruction -->
+		<input type="radio"
+		       name="scene"
+		       class="scene-radio"
+		       id="instruction" />
+
+		<label class="scene instruction"
+		       for="scene-1">
+			<span class="instruction-label">
+				You have to complete the puzzle to get out of the room.
+			</span>
+
+			<span class="instruction-label">
+				Click anywhere to begin.
+			</span>
+		</label>
+
+		<!-- scene 1 -->
+		<input type="radio"
+		       name="scene"
+		       class="scene-radio"
+		       id="scene-1" />
+		<label class="scene scene-1">
+			<span class="scene-1-label">
+				Scene 1
+			</span>
+		</label>
+	</div>
 </body>
 </html>
