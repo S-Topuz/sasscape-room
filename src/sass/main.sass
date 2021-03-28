@@ -8,12 +8,14 @@
 
 // -----------------------------
 // FONTS
+
 @font-face
 	font-family: "UAV OSD Mono"
 	src: url("../fonts/UAV-OSD-Mono.ttf")
 
 // -----------------------------
 // BODY
+
 html, body
 	height: 100%
 	width: 100%
@@ -28,6 +30,7 @@ body
 	align-items: center
 
 	background-color: #222
+	color: #eee
 
 	font-family: "UAV OSD Mono"
 	font-size: 1em
@@ -41,7 +44,6 @@ body
 	
 	width: var(--width)
 	height: var(--height)
-	background-color: #eee
 
 // scene properties
 .scene
@@ -54,8 +56,6 @@ body
 	transition: all .5s ease
 
 	.scene-1-label
-		color: #eee
-
 		position: absolute
 		top: calc(-1em - 16px)
 
@@ -70,9 +70,9 @@ body
 	.scene-1-room-#{$i}
 		background-color: var(--background#{$i})
 		position: absolute
-		top: 0
-		// left: #{($i - 1) * 300px}
-		left: 300px
+
+		transform-origin: left top
+		transform: rotateY(-90deg)
 
 		width: var(--width)
 		height: var(--height)
@@ -83,7 +83,7 @@ body
 			color: #eee
 
 			position: absolute
-			top: calc(-1em - 16px)
+			top: calc(-1em - 12px)
 			left: #{260px}
 			
 			width: 40px
@@ -91,7 +91,7 @@ body
 
 .scene-1-room-radio:checked
 	+ .scene-1-room
-		left: 0
+		transform: rotateY(0deg)
 
 // scene switcher
 .scene-radio, .scene-1-room-radio
@@ -145,3 +145,18 @@ body
 .scene-1-label
 	display: block
 	margin: 8px
+
+	.last
+		animation: blink 1s ease infinite
+
+// -----------------------------
+// ANIMATIONS
+
+@keyframes blink
+	from, to
+		background-color: #eee
+		color: #222
+
+	50%
+		background-color: #222
+		color: #eee

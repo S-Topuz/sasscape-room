@@ -20,14 +20,14 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #222;
+  color: #eee;
   font-family: "UAV OSD Mono";
   font-size: 1em; }
 
 .container {
   position: relative;
   width: var(--width);
-  height: var(--height);
-  background-color: #eee; }
+  height: var(--height); }
 
 .scene {
   width: var(--width);
@@ -36,7 +36,6 @@ body {
   top: 324px;
   transition: all 0.5s ease; }
   .scene .scene-1-label {
-    color: #eee;
     position: absolute;
     top: calc(-1em - 16px); }
   .scene * {
@@ -48,15 +47,15 @@ body {
 .scene-1-room-1 {
   background-color: var(--background1);
   position: absolute;
-  top: 0;
-  left: 300px;
+  transform-origin: left top;
+  transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
   transition: all 0.5s ease; }
   .scene-1-room-1 .scene-1-nav-1 {
     color: #eee;
     position: absolute;
-    top: calc(-1em - 16px);
+    top: calc(-1em - 12px);
     left: 260px;
     width: 40px;
     text-align: right; }
@@ -64,15 +63,15 @@ body {
 .scene-1-room-2 {
   background-color: var(--background2);
   position: absolute;
-  top: 0;
-  left: 300px;
+  transform-origin: left top;
+  transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
   transition: all 0.5s ease; }
   .scene-1-room-2 .scene-1-nav-2 {
     color: #eee;
     position: absolute;
-    top: calc(-1em - 16px);
+    top: calc(-1em - 12px);
     left: 260px;
     width: 40px;
     text-align: right; }
@@ -80,21 +79,21 @@ body {
 .scene-1-room-3 {
   background-color: var(--background3);
   position: absolute;
-  top: 0;
-  left: 300px;
+  transform-origin: left top;
+  transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
   transition: all 0.5s ease; }
   .scene-1-room-3 .scene-1-nav-3 {
     color: #eee;
     position: absolute;
-    top: calc(-1em - 16px);
+    top: calc(-1em - 12px);
     left: 260px;
     width: 40px;
     text-align: right; }
 
 .scene-1-room-radio:checked + .scene-1-room {
-  left: 0; }
+  transform: rotateY(0deg); }
 
 .scene-radio, .scene-1-room-radio {
   display: none;
@@ -132,5 +131,17 @@ body {
 .scene-1-label {
   display: block;
   margin: 8px; }
+  .intro-label .last,
+  .instruction-label .last,
+  .scene-1-label .last {
+    animation: blink 1s ease infinite; }
+
+@keyframes blink {
+  from, to {
+    background-color: #eee;
+    color: #222; }
+  50% {
+    background-color: #222;
+    color: #eee; } }
 
 /*# sourceMappingURL=main.css.map */
