@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box; }
+
 *:root {
   --background1: #e8ae68;
   --background2: #db5a42;
@@ -26,6 +29,7 @@ body {
 
 .container {
   position: relative;
+  border: 1px solid #eee;
   width: var(--width);
   height: var(--height); }
 
@@ -116,7 +120,7 @@ body {
   width: 300px;
   height: 330px;
   top: -30px;
-  left: -300px; }
+  left: -301px; }
 
 .scene-closure-right {
   background-color: #222;
@@ -124,7 +128,7 @@ body {
   width: 300px;
   height: 330px;
   top: -30px;
-  left: 300px; }
+  left: 301px; }
 
 .intro-label,
 .instruction-label,
