@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "UAV OSD Mono";
-  src: url("../fonts/UAV-OSD-Mono.ttf"); }
+  src: url("../fonts/UAV-OSD-Sans-Mono.ttf"); }
 html, body {
   height: 100%;
   width: 100%;
@@ -25,7 +25,8 @@ body {
   background-color: #222;
   color: #eee;
   font-family: "UAV OSD Mono";
-  font-size: 1em; }
+  font-size: 1em;
+  line-height: 1.5; }
 
 .container {
   position: relative;
@@ -41,7 +42,7 @@ body {
   transition: all 0.5s ease; }
   .scene .scene-1-label {
     position: absolute;
-    top: calc(-1em - 16px); }
+    top: calc(-1em - 10px); }
   .scene * {
     user-select: none; }
 
@@ -50,12 +51,14 @@ body {
 
 .scene-1-room-1 {
   background-color: var(--background1);
+  background-image: url("floor.svg");
   position: absolute;
   transform-origin: left top;
+  left: -100px;
   transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
-  transition: all 0.5s ease; }
+  transition: all 1s ease; }
   .scene-1-room-1 .scene-1-nav-1 {
     color: #eee;
     position: absolute;
@@ -66,12 +69,14 @@ body {
 
 .scene-1-room-2 {
   background-color: var(--background2);
+  background-image: url("floor.svg");
   position: absolute;
   transform-origin: left top;
+  left: -100px;
   transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
-  transition: all 0.5s ease; }
+  transition: all 1s ease; }
   .scene-1-room-2 .scene-1-nav-2 {
     color: #eee;
     position: absolute;
@@ -82,12 +87,14 @@ body {
 
 .scene-1-room-3 {
   background-color: var(--background3);
+  background-image: url("floor.svg");
   position: absolute;
   transform-origin: left top;
+  left: -100px;
   transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
-  transition: all 0.5s ease; }
+  transition: all 1s ease; }
   .scene-1-room-3 .scene-1-nav-3 {
     color: #eee;
     position: absolute;
@@ -97,6 +104,7 @@ body {
     text-align: right; }
 
 .scene-1-room-radio:checked + .scene-1-room {
+  left: 0px;
   transform: rotateY(0deg); }
 
 .scene-radio, .scene-1-room-radio {
@@ -132,13 +140,13 @@ body {
 
 .intro-label,
 .instruction-label,
-.scene-1-label {
+.prolog-label {
   display: block;
-  margin: 8px; }
+  margin: 16px; }
   .intro-label .last,
   .instruction-label .last,
-  .scene-1-label .last {
-    animation: blink 1s ease infinite; }
+  .prolog-label .last {
+    animation: blink 0.5s ease infinite; }
 
 @keyframes blink {
   from, to {

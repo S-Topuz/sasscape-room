@@ -14,7 +14,7 @@
 
 @font-face
 	font-family: "UAV OSD Mono"
-	src: url("../fonts/UAV-OSD-Mono.ttf")
+	src: url("../fonts/UAV-OSD-Sans-Mono.ttf")
 
 // -----------------------------
 // BODY
@@ -37,6 +37,7 @@ body
 
 	font-family: "UAV OSD Mono"
 	font-size: 1em
+	line-height: 1.5
 
 // -----------------------------
 // SCENE INTERFACE
@@ -62,7 +63,7 @@ body
 
 	.scene-1-label
 		position: absolute
-		top: calc(-1em - 16px)
+		top: calc(-1em - 10px)
 
 	*
 		user-select: none
@@ -74,15 +75,17 @@ body
 @for $i from 1 through 3
 	.scene-1-room-#{$i}
 		background-color: var(--background#{$i})
+		background-image: url("floor.svg")
 		position: absolute
 
 		transform-origin: left top
+		left: -100px
 		transform: rotateY(-90deg)
 
 		width: var(--width)
 		height: var(--height)
 
-		transition: all .5s ease
+		transition: all 1s ease
 
 		.scene-1-nav-#{$i}
 			color: #eee
@@ -94,8 +97,10 @@ body
 			width: 40px
 			text-align: right
 
+// room switcher for scene 1
 .scene-1-room-radio:checked
 	+ .scene-1-room
+		left: 0px
 		transform: rotateY(0deg)
 
 // scene switcher
@@ -147,12 +152,12 @@ body
 // game label
 .intro-label,
 .instruction-label,
-.scene-1-label
+.prolog-label
 	display: block
-	margin: 8px
+	margin: 16px
 
 	.last
-		animation: blink 1s ease infinite
+		animation: blink .5s ease infinite
 
 // -----------------------------
 // ANIMATIONS
