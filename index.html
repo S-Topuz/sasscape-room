@@ -49,12 +49,54 @@
 		       id="scene-1" />
 
 		<form class="scene scene-1">
-			<span class="scene-1-label">
-				Scene 1
-			</span>
+			<!-- room switcher for scene 1 -->
+			<input type="radio"
+			       class="scene-1-room-radio"
+			       name="scene-1-room"
+			       id="scene-1-room-1"
+			       checked />
+
+			<div class="scene-1-room scene-1-room-1">
+				<span class="scene-1-label">
+					Scene 1
+				</span>
+
+				<span class="scene-1-nav-1">
+					<label for="scene-1-room-2">▶</label>
+				</span>
+			</div>
+
+			<input type="radio"
+			       class="scene-1-room-radio"
+			       name="scene-1-room"
+			       id="scene-1-room-2" />
+			<div class="scene-1-room scene-1-room-2">
+				<span class="scene-1-label">
+					Scene 2
+				</span>
+
+				<span class="scene-1-nav-2">
+					<label for="scene-1-room-1">◀</label>
+					<label for="scene-1-room-3">▶</label>
+				</span>
+			</div>
+
+			<input type="radio"
+			       class="scene-1-room-radio"
+			       name="scene-1-room"
+			       id="scene-1-room-3" />
+			<div class="scene-1-room scene-1-room-3">
+				<span class="scene-1-label">
+					Scene 3
+				</span>
+
+				<span class="scene-1-nav-3">
+					<label for="scene-1-room-2">◀</label>
+				</span>
+			</div>
 		</form>
 
-		<div class="scene scene-closure"></div>
+		<div class="scene scene-closure-bottom"></div>
 		<div class="scene scene-closure-left"></div>
 		<div class="scene scene-closure-right"></div>
 	</div>
