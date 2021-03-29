@@ -55,12 +55,13 @@ body
 	height: var(--height)
 
 	position: absolute
-	top: 330px
+	top: 500px
 
 	transition: all 1s ease
 
 	.scene-1-label
 		position: absolute
+		background-color: #222
 		top: calc(-1em - 10px)
 
 	*
@@ -77,20 +78,19 @@ body
 		position: absolute
 
 		transform-origin: left top
-		left: -100px
-		transform: rotateY(-90deg)
-
+		left: -305px
 		width: var(--width)
 		height: var(--height)
 
 		transition: all 1s ease
 
 		.scene-1-nav-#{$i}
+			background-color: #222
 			color: #eee
 
 			position: absolute
 			top: calc(-1em - 12px)
-			left: #{260px}
+			left: 260px
 			
 			width: 40px
 			text-align: right
@@ -99,7 +99,6 @@ body
 .scene-1-room-radio:checked
 	+ .scene-1-room
 		left: 0px
-		transform: rotateY(0deg)
 
 // dark background
 .room-dark
@@ -119,10 +118,12 @@ body
 	display: none
 
 .bedroom-switch-checkbox ~ .scene-1-nav-1,
+.kitchen-switch-checkbox ~ .scene-1-nav-2 label:last-child,
 	display: none
 
-.bedroom-switch-checkbox:checked ~ .scene-1-nav-1
-	display: block
+.bedroom-switch-checkbox:checked ~ .scene-1-nav-1,
+.kitchen-switch-checkbox:checked ~ .scene-1-nav-2 label:last-child,
+	display: inline
 
 // scene switcher
 .scene-radio, .scene-1-room-radio
@@ -138,23 +139,24 @@ body
 	background-color: #222
 
 	position: absolute
+	z-index: 3
 
 	@if ($orientation == "left" or $orientation == "right")
-		width: 300px
-		height: 330px
+		width: 310px
+		height: 600px
 
-		top: -30px
+		top: -200px
 		
 		@if ($orientation == "left")
-			left: -301px
+			left: -312px
 		@else
-			left: 301px
+			left: 312px
 
 	@else
 		width: 2000px
-		height: 330px
+		height: 500px
 
-		left: 0
+		left: -600px
 
 		@if ($orientation == "bottom")
 			top: 301px
@@ -185,6 +187,7 @@ body
 
 @mixin objects($width, $height, $x, $y)
 	position: absolute
+	user-drag: none
 	left: $x
 	top: $y
 
@@ -197,14 +200,77 @@ body
 // bed
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
-
 // switch
 .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
+// cupboard
+.cupboard
+	@include objects(60px, 60px, var(--object-x), var(--object-y))
 
+// ROOM DARK INTERACTION
 .room-dark .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
 	@include object-dark()
+
+// -----------------------------
+// ITEMS
+
+.items-section
+	display: flex
+	flex-direction: column
+
+	width: var(--width)
+
+	position: absolute
+	top: 310px
+	left: 0
+	z-index: 5
+
+	.item-block
+		display: flex
+		flex-direction: row
+
+		width: 18px
+		height: 18px
+
+		padding: 2px
+		margin: 2px
+		border: 1px solid #eee
+
+// -----------------------------
+// MESSAGE TRIGGERS
+
+.room-message
+	position: absolute
+	top: calc(-1em - 88px)
+	left: 0
+
+	background-color: #222
+
+	width: calc(var(--width) - 32px)
+	height: 30px
+	overflow-y: auto
+
+	display: none
+
+	font-size: 0.5em
+
+	padding: 16px
+	border: 1px solid #eee
+
+	span
+		vertical-align: middle
+
+.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
+.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off
+	display: none
+
+.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
+.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
+.message-trigger-bedroom-turn-off,
+.message-trigger-kitchen-turn-off
+	display: flex
+	align-items: center
 
 // -----------------------------
 // ANIMATIONS

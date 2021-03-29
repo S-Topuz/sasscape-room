@@ -42,7 +42,7 @@
 			</span>
 
 			<span class="prolog-label">
-				This place seems strange. I never saw this place before<span class="last">?</span></span>
+				This place seems strange. I never saw this place before<span class="last">.</span></span>
 			</span>
 		</label>
 
@@ -87,11 +87,10 @@
 
 		<form class="scene scene-1">
 			<input type="radio"
-			       class="scene-1-room-radio"
-			       name="scene-1-room"
-			       id="scene-1-room-1"
-			       checked />
-
+		       class="scene-1-room-radio"
+		       name="scene-1-room"
+		       id="scene-1-room-1"
+		       checked />
 			<div class="scene-1-room scene-1-room-1">
 				<!-- bedroom object switcher -->
 				<input type="checkbox"
@@ -99,17 +98,21 @@
 				       name="bedroom-lamp"
 				       id="bedroom-lamp">
 
-				<div class="scene-1-label">
-					Bedroo<span class="last">m</span>
-				</div>
+				<div class="scene-1-label">Bedroo<span class="last">m</span></div>
 
 				<span class="scene-1-nav-1">
 					<label for="scene-1-room-2">▶</label>
 				</span>
 
-				<!-- beedroom object -->
-				<div class="bed" style="--object-x: 100px; --object-y: 150px">
+				<!-- BEDROOM OBJECTS -->
+				<!-- beedroom bed -->
+				<div class="bed" style="--object-x: 100px; --object-y: 170px">
 					<img src="assets/objects/bed.svg" alt data-tooltip="bed" />
+				</div>
+
+				<!-- bedroom cupboard -->
+				<div class="cupboard" style="--object-x: 35px; --object-y: 190px">
+					<img src="assets/objects/cupboard.svg" alt data-tooltip="bed" />
 				</div>
 				
 				<!-- bedroom switch -->
@@ -117,17 +120,32 @@
 					<img src="assets/objects/switch.svg" alt data-tooltip="bedroom switch" />
 				</label>
 
-				<!-- bedroom turned of -->
+				<!-- bedroom turned off -->
 				<div class="scene-1-room room-dark">
 					<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp"></label>
+				</div>
+
+				<!-- bedroom message triggers -->
+				<div class="room-message message-trigger-bedroom-turn-off">
+					<span>This place is so dark. I need some light so I can see where am I.</span>
+				</div>
+
+				<div class="room-message message-trigger-bedroom-turn-on">
+					<span>Finally I can turn on the light. It seems like a bedroom. I need to get out of here.</span>
 				</div>
 			</div>
 
 			<input type="radio"
-			       class="scene-1-room-radio"
-			       name="scene-1-room"
-			       id="scene-1-room-2" />
+		       class="scene-1-room-radio"
+		       name="scene-1-room"
+		       id="scene-1-room-2" />
 			<div class="scene-1-room scene-1-room-2">
+				<!-- kitchen object switcher -->
+				<input type="checkbox"
+				       class="kitchen-switch-checkbox"
+				       name="kitchen-lamp"
+				       id="kitchen-lamp">
+
 				<div class="scene-1-label">
 					Kitche<span class="last">n</span>
 				</div>
@@ -137,28 +155,32 @@
 					<label for="scene-1-room-3">▶</label>
 				</span>
 
-				<!-- kitchen object switcher -->
-				<input type="checkbox"
-				       class="kitchen-switch-checkbox"
-				       name="kitchen-lamp"
-				       id="kitchen-lamp">
-
 				<!-- kitchen switch -->
 				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="kitchen-lamp">
 					<img src="assets/objects/switch.svg" alt data-tooltip="kitchen switch" />
 				</label>
 
-				<!-- kitchen turned of -->
+				<!-- kitchen turned off -->
 				<div class="scene-1-room room-dark">
 					<label class="switch" style="--object-x: 230px; --object-y: 150px" for="kitchen-lamp"></label>
 				</div>
-			</div>
 
+				<!-- bedroom message triggers -->
+				<div class="room-message message-trigger-kitchen-turn-off">
+					<span>Aw, come on! Don't this room again!</span>
+				</div>
+
+				<div class="room-message message-trigger-kitchen-turn-on">
+					<span>Lights on! Now let's find something to get out.</span>
+				</div>
+			</div>
+			
 			<input type="radio"
-			       class="scene-1-room-radio"
-			       name="scene-1-room"
-			       id="scene-1-room-3" />
+		       class="scene-1-room-radio"
+		       name="scene-1-room"
+		       id="scene-1-room-3" />
 			<div class="scene-1-room scene-1-room-3">
+
 				<div class="scene-1-label">
 					Living Roo<span class="last">m</span>
 				</div>
@@ -170,10 +192,11 @@
 			</div>
 
 			<input type="radio"
-			       class="scene-1-room-radio"
-			       name="scene-1-room"
-			       id="scene-1-room-4" />
+		       class="scene-1-room-radio"
+		       name="scene-1-room"
+		       id="scene-1-room-4" />
 			<div class="scene-1-room scene-1-room-4">
+
 				<div class="scene-1-label">
 					Study Roo<span class="last">m</span>
 				</div>
@@ -181,6 +204,15 @@
 				<span class="scene-1-nav-4">
 					<label for="scene-1-room-3">◀</label>
 				</span>
+			</div>
+
+			<!-- ITEMS SECTION -->
+			<div class="items-section">
+				ITEMS
+
+				<label class="item-block">
+					<img src="assets/items/item-document.svg" alt />
+				</label>
 			</div>
 		</form>
 
