@@ -1,10 +1,8 @@
-* {
-  box-sizing: border-box; }
-
 *:root {
   --background1: #e8ae68;
   --background2: #db5a42;
   --background3: #ffd275;
+  --background4: #469eff;
   --width: 300px;
   --height: 300px; }
 
@@ -38,10 +36,11 @@ body {
   width: var(--width);
   height: var(--height);
   position: absolute;
-  top: 324px;
-  transition: all 0.5s ease; }
+  top: 500px;
+  transition: all 1s ease; }
   .scene .scene-1-label {
     position: absolute;
+    background-color: #222;
     top: calc(-1em - 10px); }
   .scene * {
     user-select: none; }
@@ -51,15 +50,15 @@ body {
 
 .scene-1-room-1 {
   background-color: var(--background1);
-  background-image: url("floor.svg");
+  background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
   transform-origin: left top;
-  left: -100px;
-  transform: rotateY(-90deg);
+  left: -305px;
   width: var(--width);
   height: var(--height);
   transition: all 1s ease; }
   .scene-1-room-1 .scene-1-nav-1 {
+    background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
@@ -69,15 +68,15 @@ body {
 
 .scene-1-room-2 {
   background-color: var(--background2);
-  background-image: url("floor.svg");
+  background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
   transform-origin: left top;
-  left: -100px;
-  transform: rotateY(-90deg);
+  left: -305px;
   width: var(--width);
   height: var(--height);
   transition: all 1s ease; }
   .scene-1-room-2 .scene-1-nav-2 {
+    background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
@@ -87,15 +86,33 @@ body {
 
 .scene-1-room-3 {
   background-color: var(--background3);
-  background-image: url("floor.svg");
+  background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
   transform-origin: left top;
-  left: -100px;
-  transform: rotateY(-90deg);
+  left: -305px;
   width: var(--width);
   height: var(--height);
   transition: all 1s ease; }
   .scene-1-room-3 .scene-1-nav-3 {
+    background-color: #222;
+    color: #eee;
+    position: absolute;
+    top: calc(-1em - 12px);
+    left: 260px;
+    width: 40px;
+    text-align: right; }
+
+.scene-1-room-4 {
+  background-color: var(--background4);
+  background-image: url("../../assets/backgrounds/floor.svg");
+  position: absolute;
+  transform-origin: left top;
+  left: -305px;
+  width: var(--width);
+  height: var(--height);
+  transition: all 1s ease; }
+  .scene-1-room-4 .scene-1-nav-4 {
+    background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
@@ -104,8 +121,29 @@ body {
     text-align: right; }
 
 .scene-1-room-radio:checked + .scene-1-room {
-  left: 0px;
-  transform: rotateY(0deg); }
+  left: 0px; }
+
+.room-dark {
+  position: absolute;
+  height: var(--height);
+  width: var(--width);
+  background-color: rgba(0, 0, 0, 0.95); }
+
+.bedroom-switch-checkbox,
+.kitchen-switch-checkbox {
+  display: none; }
+
+.bedroom-switch-checkbox:checked ~ .room-dark,
+.kitchen-switch-checkbox:checked ~ .room-dark {
+  display: none; }
+
+.bedroom-switch-checkbox ~ .scene-1-nav-1,
+.kitchen-switch-checkbox ~ .scene-1-nav-2 label:last-child {
+  display: none; }
+
+.bedroom-switch-checkbox:checked ~ .scene-1-nav-1,
+.kitchen-switch-checkbox:checked ~ .scene-1-nav-2 label:last-child {
+  display: inline; }
 
 .scene-radio, .scene-1-room-radio {
   display: none;
@@ -117,26 +155,29 @@ body {
 .scene-closure-bottom {
   background-color: #222;
   position: absolute;
+  z-index: 3;
   width: 2000px;
-  height: 330px;
-  left: 0;
-  top: 300px; }
+  height: 500px;
+  left: -600px;
+  top: 301px; }
 
 .scene-closure-left {
   background-color: #222;
   position: absolute;
-  width: 300px;
-  height: 330px;
-  top: -30px;
-  left: -301px; }
+  z-index: 3;
+  width: 310px;
+  height: 600px;
+  top: -200px;
+  left: -312px; }
 
 .scene-closure-right {
   background-color: #222;
   position: absolute;
-  width: 300px;
-  height: 330px;
-  top: -30px;
-  left: 301px; }
+  z-index: 3;
+  width: 310px;
+  height: 600px;
+  top: -200px;
+  left: 312px; }
 
 .intro-label,
 .instruction-label,
@@ -147,6 +188,90 @@ body {
   .instruction-label .last,
   .prolog-label .last {
     animation: blink 0.5s ease infinite; }
+
+.bed {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 100px;
+  height: 100px; }
+
+.switch {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 18px;
+  height: 18px; }
+
+.cupboard {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 60px;
+  height: 60px; }
+
+.room-dark .switch {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 18px;
+  height: 18px;
+  background-color: rgba(0, 0, 0, 0.95); }
+
+.items-section {
+  display: flex;
+  flex-direction: column;
+  width: var(--width);
+  position: absolute;
+  top: 310px;
+  left: 0;
+  z-index: 5; }
+  .items-section .item-block {
+    display: flex;
+    flex-direction: row;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid #eee; }
+
+.room-message {
+  position: absolute;
+  top: calc(-1em - 88px);
+  left: 0;
+  background-color: #222;
+  width: 300px;
+  height: 0;
+  overflow-y: hidden;
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  font-size: 0.5em;
+  box-sizing: border-box;
+  padding: 0 16px;
+  border: 1px solid #eee; }
+  .room-message span {
+    vertical-align: middle; }
+
+.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
+.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off {
+  width: 300px;
+  height: 0;
+  padding: 0 16px;
+  overflow-y: hidden; }
+
+.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
+.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
+.message-trigger-bedroom-turn-off,
+.message-trigger-kitchen-turn-off {
+  width: 300px;
+  height: 62px;
+  padding: 16px;
+  overflow-y: auto; }
 
 @keyframes blink {
   from, to {
