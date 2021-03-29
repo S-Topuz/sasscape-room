@@ -244,26 +244,34 @@ body {
   top: calc(-1em - 88px);
   left: 0;
   background-color: #222;
-  width: calc(var(--width) - 32px);
-  height: 30px;
-  overflow-y: auto;
-  display: none;
+  width: 300px;
+  height: 0;
+  overflow-y: hidden;
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
   font-size: 0.5em;
-  padding: 16px;
+  box-sizing: border-box;
+  padding: 0 16px;
   border: 1px solid #eee; }
   .room-message span {
     vertical-align: middle; }
 
 .bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
 .kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off {
-  display: none; }
+  width: 300px;
+  height: 0;
+  padding: 0 16px;
+  overflow-y: hidden; }
 
 .bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
 .kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off {
-  display: flex;
-  align-items: center; }
+  width: 300px;
+  height: 62px;
+  padding: 16px;
+  overflow-y: auto; }
 
 @keyframes blink {
   from, to {
