@@ -57,7 +57,7 @@ body
 	position: absolute
 	top: 330px
 
-	transition: all .5s ease
+	transition: all 1s ease
 
 	.scene-1-label
 		position: absolute
@@ -110,12 +110,19 @@ body
 	background-color: rgba(0, 0, 0, .95)
 
 // dark background switcher
-.bedroom-switch-checkbox
+.bedroom-switch-checkbox,
+.kitchen-switch-checkbox
 	display: none
 
-.bedroom-switch-checkbox:checked + .room-dark,
-.bedroom-switch-checkbox:checked + .scene-1-label
+.bedroom-switch-checkbox:checked ~ .room-dark,
+.kitchen-switch-checkbox:checked ~ .room-dark,
 	display: none
+
+.bedroom-switch-checkbox ~ .scene-1-nav-1,
+	display: none
+
+.bedroom-switch-checkbox:checked ~ .scene-1-nav-1
+	display: block
 
 // scene switcher
 .scene-radio, .scene-1-room-radio
@@ -176,33 +183,27 @@ body
 // -----------------------------
 // OBJECTS
 
-@mixin objects($x, $y)
+@mixin objects($width, $height, $x, $y)
 	position: absolute
 	left: $x
 	top: $y
+
+	width: $width
+	height: $height
 
 @mixin object-dark()
 	background-color: rgba(0, 0, 0, .95)
 
 // bed
 .bed
-	width: 100px
-	height: 100px
-
-	@include objects(var(--object-x), var(--object-y))
+	@include objects(100px, 100px, var(--object-x), var(--object-y))
 
 // switch
 .switch
-	width: 18px
-	height: 18px
+	@include objects(18px, 18px, var(--object-x), var(--object-y))
 
-	@include objects(var(--object-x), var(--object-y))
-
-.room-dark .switch img
-	width: 18px
-	height: 18px
-
-	@include objects(var(--object-x), var(--object-y))
+.room-dark .switch
+	@include objects(18px, 18px, var(--object-x), var(--object-y))
 	@include object-dark()
 
 // -----------------------------

@@ -37,7 +37,7 @@ body {
   height: var(--height);
   position: absolute;
   top: 330px;
-  transition: all 0.5s ease; }
+  transition: all 1s ease; }
   .scene .scene-1-label {
     position: absolute;
     top: calc(-1em - 10px); }
@@ -129,12 +129,19 @@ body {
   width: var(--width);
   background-color: rgba(0, 0, 0, 0.95); }
 
-.bedroom-switch-checkbox {
+.bedroom-switch-checkbox,
+.kitchen-switch-checkbox {
   display: none; }
 
-.bedroom-switch-checkbox:checked + .room-dark,
-.bedroom-switch-checkbox:checked + .scene-1-label {
+.bedroom-switch-checkbox:checked ~ .room-dark,
+.kitchen-switch-checkbox:checked ~ .room-dark {
   display: none; }
+
+.bedroom-switch-checkbox ~ .scene-1-nav-1 {
+  display: none; }
+
+.bedroom-switch-checkbox:checked ~ .scene-1-nav-1 {
+  display: block; }
 
 .scene-radio, .scene-1-room-radio {
   display: none;
@@ -178,25 +185,25 @@ body {
     animation: blink 0.5s ease infinite; }
 
 .bed {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left: var(--object-x);
-  top: var(--object-y); }
-
-.switch {
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  left: var(--object-x);
-  top: var(--object-y); }
-
-.room-dark .switch img {
-  width: 18px;
-  height: 18px;
   position: absolute;
   left: var(--object-x);
   top: var(--object-y);
+  width: 100px;
+  height: 100px; }
+
+.switch {
+  position: absolute;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 18px;
+  height: 18px; }
+
+.room-dark .switch {
+  position: absolute;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 18px;
+  height: 18px;
   background-color: rgba(0, 0, 0, 0.95); }
 
 @keyframes blink {

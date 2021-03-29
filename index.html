@@ -93,29 +93,34 @@
 			       checked />
 
 			<div class="scene-1-room scene-1-room-1">
-				<span class="scene-1-nav-1">
-					<label for="scene-1-room-2">▶</label>
-				</span>
-
-				<div class="bed" style="--object-x: 100px; --object-y: 150px">
-					<img src="assets/objects/bed.svg" alt data-tooltip="bed" />
-				</div>
-				
-				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp">
-					<img src="assets/objects/switch.svg" alt data-tooltip="bedroom switch" />
-				</label>
-
+				<!-- bedroom object switcher -->
 				<input type="checkbox"
 				       class="bedroom-switch-checkbox"
 				       name="bedroom-lamp"
 				       id="bedroom-lamp">
+
+				<div class="scene-1-label">
+					Bedroo<span class="last">m</span>
+				</div>
+
+				<span class="scene-1-nav-1">
+					<label for="scene-1-room-2">▶</label>
+				</span>
+
+				<!-- beedroom object -->
+				<div class="bed" style="--object-x: 100px; --object-y: 150px">
+					<img src="assets/objects/bed.svg" alt data-tooltip="bed" />
+				</div>
+				
+				<!-- bedroom switch -->
+				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp">
+					<img src="assets/objects/switch.svg" alt data-tooltip="bedroom switch" />
+				</label>
+
+				<!-- bedroom turned of -->
 				<div class="scene-1-room room-dark">
 					<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp"></label>
 				</div>
-				
-				<span class="scene-1-label">
-					Bedroo<span class="last">m</span>
-				</span>
 			</div>
 
 			<input type="radio"
@@ -123,14 +128,30 @@
 			       name="scene-1-room"
 			       id="scene-1-room-2" />
 			<div class="scene-1-room scene-1-room-2">
-				<span class="scene-1-label">
+				<div class="scene-1-label">
 					Kitche<span class="last">n</span>
-				</span>
+				</div>
 
 				<span class="scene-1-nav-2">
 					<label for="scene-1-room-1">◀</label>
 					<label for="scene-1-room-3">▶</label>
 				</span>
+
+				<!-- kitchen object switcher -->
+				<input type="checkbox"
+				       class="kitchen-switch-checkbox"
+				       name="kitchen-lamp"
+				       id="kitchen-lamp">
+
+				<!-- kitchen switch -->
+				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="kitchen-lamp">
+					<img src="assets/objects/switch.svg" alt data-tooltip="kitchen switch" />
+				</label>
+
+				<!-- kitchen turned of -->
+				<div class="scene-1-room room-dark">
+					<label class="switch" style="--object-x: 230px; --object-y: 150px" for="kitchen-lamp"></label>
+				</div>
 			</div>
 
 			<input type="radio"
@@ -138,9 +159,9 @@
 			       name="scene-1-room"
 			       id="scene-1-room-3" />
 			<div class="scene-1-room scene-1-room-3">
-				<span class="scene-1-label">
+				<div class="scene-1-label">
 					Living Roo<span class="last">m</span>
-				</span>
+				</div>
 
 				<span class="scene-1-nav-3">
 					<label for="scene-1-room-2">◀</label>
@@ -153,10 +174,9 @@
 			       name="scene-1-room"
 			       id="scene-1-room-4" />
 			<div class="scene-1-room scene-1-room-4">
-				<span class="scene-1-label">
+				<div class="scene-1-label">
 					Study Roo<span class="last">m</span>
-				</span>
-
+				</div>
 
 				<span class="scene-1-nav-4">
 					<label for="scene-1-room-3">◀</label>
