@@ -5,6 +5,7 @@
   --background1: #e8ae68;
   --background2: #db5a42;
   --background3: #ffd275;
+  --background4: #469eff;
   --width: 300px;
   --height: 300px; }
 
@@ -51,14 +52,14 @@ body {
 
 .scene-1-room-1 {
   background-color: var(--background1);
-  background-image: url("floor.svg");
+  background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
   transform-origin: left top;
   left: -100px;
   transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
-  transition: all 1s ease; }
+  transition: all 0.5s ease; }
   .scene-1-room-1 .scene-1-nav-1 {
     color: #eee;
     position: absolute;
@@ -69,14 +70,14 @@ body {
 
 .scene-1-room-2 {
   background-color: var(--background2);
-  background-image: url("floor.svg");
+  background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
   transform-origin: left top;
   left: -100px;
   transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
-  transition: all 1s ease; }
+  transition: all 0.5s ease; }
   .scene-1-room-2 .scene-1-nav-2 {
     color: #eee;
     position: absolute;
@@ -87,15 +88,33 @@ body {
 
 .scene-1-room-3 {
   background-color: var(--background3);
-  background-image: url("floor.svg");
+  background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
   transform-origin: left top;
   left: -100px;
   transform: rotateY(-90deg);
   width: var(--width);
   height: var(--height);
-  transition: all 1s ease; }
+  transition: all 0.5s ease; }
   .scene-1-room-3 .scene-1-nav-3 {
+    color: #eee;
+    position: absolute;
+    top: calc(-1em - 12px);
+    left: 260px;
+    width: 40px;
+    text-align: right; }
+
+.scene-1-room-4 {
+  background-color: var(--background4);
+  background-image: url("../../assets/backgrounds/floor.svg");
+  position: absolute;
+  transform-origin: left top;
+  left: -100px;
+  transform: rotateY(-90deg);
+  width: var(--width);
+  height: var(--height);
+  transition: all 0.5s ease; }
+  .scene-1-room-4 .scene-1-nav-4 {
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
@@ -147,6 +166,20 @@ body {
   .instruction-label .last,
   .prolog-label .last {
     animation: blink 0.5s ease infinite; }
+
+.bed {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: var(--object-x);
+  top: var(--object-y); }
+
+.switch {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: var(--object-x);
+  top: var(--object-y); }
 
 @keyframes blink {
   from, to {

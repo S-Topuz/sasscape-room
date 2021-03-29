@@ -5,6 +5,7 @@
 	--background1: #e8ae68
 	--background2: #db5a42
 	--background3: #ffd275
+	--background4: #469eff
 
 	--width: 300px
 	--height: 300px
@@ -72,10 +73,10 @@ body
 	display: inline
 
 // scene room
-@for $i from 1 through 3
+@for $i from 1 through 4
 	.scene-1-room-#{$i}
 		background-color: var(--background#{$i})
-		background-image: url("floor.svg")
+		background-image: url("../../assets/backgrounds/floor.svg")
 		position: absolute
 
 		transform-origin: left top
@@ -85,7 +86,7 @@ body
 		width: var(--width)
 		height: var(--height)
 
-		transition: all 1s ease
+		transition: all .5s ease
 
 		.scene-1-nav-#{$i}
 			color: #eee
@@ -158,6 +159,28 @@ body
 
 	.last
 		animation: blink .5s ease infinite
+
+// -----------------------------
+// OBJECTS
+
+@mixin objects($x, $y)
+	position: absolute
+	left: $x
+	top: $y
+
+// bed
+.bed
+	width: 100px
+	height: 100px
+
+	@include objects(var(--object-x), var(--object-y))
+
+// switch
+.switch
+	width: 18px
+	height: 18px
+
+	@include objects(var(--object-x), var(--object-y))
 
 // -----------------------------
 // ANIMATIONS
