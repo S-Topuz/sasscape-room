@@ -93,10 +93,6 @@
 			       checked />
 
 			<div class="scene-1-room scene-1-room-1">
-				<span class="scene-1-label">
-					Bedroo<span class="last">m</span>
-				</span>
-
 				<span class="scene-1-nav-1">
 					<label for="scene-1-room-2">▶</label>
 				</span>
@@ -104,10 +100,22 @@
 				<div class="bed" style="--object-x: 100px; --object-y: 150px">
 					<img src="assets/objects/bed.svg" alt data-tooltip="bed" />
 				</div>
+				
+				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp">
+					<img src="assets/objects/switch.svg" alt data-tooltip="bedroom switch" />
+				</label>
 
-				<div class="switch" style="--object-x: 230px; --object-y: 150px">
-					<img src="assets/objects/switch.svg" alt data-tooltip="switch" />
+				<input type="checkbox"
+				       class="bedroom-switch-checkbox"
+				       name="bedroom-lamp"
+				       id="bedroom-lamp">
+				<div class="scene-1-room room-dark">
+					<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp"></label>
 				</div>
+				
+				<span class="scene-1-label">
+					Bedroo<span class="last">m</span>
+				</span>
 			</div>
 
 			<input type="radio"
@@ -148,6 +156,7 @@
 				<span class="scene-1-label">
 					Study Roo<span class="last">m</span>
 				</span>
+
 
 				<span class="scene-1-nav-4">
 					<label for="scene-1-room-3">◀</label>

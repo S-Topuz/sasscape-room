@@ -1,6 +1,3 @@
-*
-	box-sizing: border-box
-
 *:root
 	--background1: #e8ae68
 	--background2: #db5a42
@@ -58,7 +55,7 @@ body
 	height: var(--height)
 
 	position: absolute
-	top: 324px
+	top: 330px
 
 	transition: all .5s ease
 
@@ -86,7 +83,7 @@ body
 		width: var(--width)
 		height: var(--height)
 
-		transition: all .5s ease
+		transition: all 1s ease
 
 		.scene-1-nav-#{$i}
 			color: #eee
@@ -103,6 +100,22 @@ body
 	+ .scene-1-room
 		left: 0px
 		transform: rotateY(0deg)
+
+// dark background
+.room-dark
+	position: absolute
+	height: var(--height)
+	width: var(--width)
+
+	background-color: rgba(0, 0, 0, .95)
+
+// dark background switcher
+.bedroom-switch-checkbox
+	display: none
+
+.bedroom-switch-checkbox:checked + .room-dark,
+.bedroom-switch-checkbox:checked + .scene-1-label
+	display: none
 
 // scene switcher
 .scene-radio, .scene-1-room-radio
@@ -137,7 +150,7 @@ body
 		left: 0
 
 		@if ($orientation == "bottom")
-			top: 300px
+			top: 301px
 		@else
 			top: -300px
 
@@ -168,6 +181,9 @@ body
 	left: $x
 	top: $y
 
+@mixin object-dark()
+	background-color: rgba(0, 0, 0, .95)
+
 // bed
 .bed
 	width: 100px
@@ -181,6 +197,13 @@ body
 	height: 18px
 
 	@include objects(var(--object-x), var(--object-y))
+
+.room-dark .switch img
+	width: 18px
+	height: 18px
+
+	@include objects(var(--object-x), var(--object-y))
+	@include object-dark()
 
 // -----------------------------
 // ANIMATIONS
