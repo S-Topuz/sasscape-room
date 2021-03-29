@@ -36,7 +36,7 @@ body {
   width: var(--width);
   height: var(--height);
   position: absolute;
-  top: 500px;
+  top: 1000px;
   transition: all 1s ease; }
   .scene .scene-1-label {
     position: absolute;
@@ -155,27 +155,27 @@ body {
 .scene-closure-bottom {
   background-color: #222;
   position: absolute;
-  z-index: 3;
   width: 2000px;
   height: 500px;
   left: -600px;
-  top: 301px; }
+  top: 301px;
+  z-index: 3; }
 
 .scene-closure-left {
   background-color: #222;
   position: absolute;
-  z-index: 3;
   width: 310px;
-  height: 600px;
+  height: 1500px;
+  z-index: 5;
   top: -200px;
   left: -312px; }
 
 .scene-closure-right {
   background-color: #222;
   position: absolute;
-  z-index: 3;
   width: 310px;
-  height: 600px;
+  height: 1500px;
+  z-index: 5;
   top: -200px;
   left: 312px; }
 
@@ -189,40 +189,72 @@ body {
   .prolog-label .last {
     animation: blink 0.5s ease infinite; }
 
+.bedroom-paper-item-radio {
+  display: none;
+  position: absolute; }
+
 .bed {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
+  transform: scale(1);
   width: 100px;
   height: 100px; }
+  .bed img {
+    width: 100%; }
 
 .switch {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
+  transform: scale(1);
   width: 18px;
   height: 18px; }
+  .switch img {
+    width: 100%; }
 
 .cupboard {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
+  transform: scale(1);
   width: 60px;
   height: 60px; }
+  .cupboard img {
+    width: 100%; }
+
+.paperball {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  transform: scale(1);
+  width: 10px;
+  height: 10px;
+  transform-origin: center;
+  transition: all 0.5s ease; }
+  .paperball img {
+    width: 100%; }
+
+.bedroom-paper-item-radio:checked ~ .paperball {
+  transform: scale(0); }
 
 .room-dark .switch {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
+  transform: scale(1);
   width: 18px;
   height: 18px;
   background-color: rgba(0, 0, 0, 0.95); }
+  .room-dark .switch img {
+    width: 100%; }
 
-.items-section {
+.items-board {
   display: flex;
   flex-direction: column;
   width: var(--width);
@@ -230,48 +262,78 @@ body {
   top: 310px;
   left: 0;
   z-index: 5; }
-  .items-section .item-block {
+  .items-board .items-list {
     display: flex;
-    flex-direction: row;
-    width: 18px;
-    height: 18px;
-    padding: 2px;
-    margin: 2px;
-    border: 1px solid #eee; }
+    flex-direction: row; }
+    .items-board .items-list .item-block {
+      display: none;
+      width: 18px;
+      height: 18px;
+      padding: 2px;
+      margin: 2px;
+      border: 1px solid #eee; }
 
-.room-message {
+.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block {
+  display: block; }
+
+.bedroom-paperball-1-description-checkbox {
+  display: none; }
+
+.items-description-board {
+  position: absolute;
+  z-index: 5;
+  overflow-y: hidden;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(300px - 32px);
+  height: 0;
+  padding: 0 16px;
+  border: none;
+  font-size: 0.5em;
+  transition: all 0.5s ease;
+  background-color: #222;
+  position: absolute;
+  top: 368px;
+  left: 0; }
+
+.bedroom-paperball-1-description-checkbox:checked ~ .paperball-1-description {
+  width: calc(300px - 32px);
+  height: 30px;
+  padding: 16px;
+  border: 1px solid #eee;
+  overflow-y: auto; }
+
+.room-message-board {
+  position: absolute;
+  z-index: 5;
+  overflow-y: hidden;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(300px - 32px);
+  height: 0;
+  padding: 0 16px;
+  border: none;
+  font-size: 0.5em;
+  transition: all 0.5s ease;
+  background-color: #222;
   position: absolute;
   top: calc(-1em - 88px);
-  left: 0;
-  background-color: #222;
-  width: 300px;
-  height: 0;
-  overflow-y: hidden;
-  transition: all 0.5s ease;
-  display: flex;
-  align-items: center;
-  font-size: 0.5em;
-  box-sizing: border-box;
-  padding: 0 16px;
-  border: 1px solid #eee; }
-  .room-message span {
-    vertical-align: middle; }
-
-.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
-.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off {
-  width: 300px;
-  height: 0;
-  padding: 0 16px;
-  overflow-y: hidden; }
+  left: 0; }
 
 .bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
+.bedroom-paper-item-radio:checked ~ .message-trigger-paperball-taken,
 .kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off {
-  width: 300px;
-  height: 62px;
+  width: calc(300px - 32px);
+  height: 30px;
   padding: 16px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  border: 1px solid #eee; }
 
 @keyframes blink {
   from, to {

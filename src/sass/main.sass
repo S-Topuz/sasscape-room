@@ -40,6 +40,29 @@ body
 // -----------------------------
 // SCENE INTERFACE
 
+// board
+@mixin board()
+	position: absolute
+	z-index: 5
+	overflow-y: hidden
+
+	box-sizing: content-box
+	display: flex
+	flex-direction: column
+	justify-content: center
+
+	width: calc(300px - 32px)
+	height: 0
+	padding: 0 16px
+	border: none
+
+	font-size: 0.5em
+
+	transition: all .5s ease
+
+	background-color: #222
+
+
 // container
 .container
 	position: relative
@@ -55,7 +78,7 @@ body
 	height: var(--height)
 
 	position: absolute
-	top: 500px
+	top: 1000px
 
 	transition: all 1s ease
 
@@ -139,12 +162,13 @@ body
 	background-color: #222
 
 	position: absolute
-	z-index: 3
 
 	@if ($orientation == "left" or $orientation == "right")
 		width: 310px
-		height: 600px
+		height: 1500px
 
+		z-index: 5
+		
 		top: -200px
 		
 		@if ($orientation == "left")
@@ -160,6 +184,8 @@ body
 
 		@if ($orientation == "bottom")
 			top: 301px
+			z-index: 3
+
 		@else
 			top: -300px
 
@@ -184,6 +210,9 @@ body
 
 // -----------------------------
 // OBJECTS
+.bedroom-paper-item-radio
+	display: none
+	position: absolute
 
 @mixin objects($width, $height, $x, $y)
 	position: absolute
@@ -191,8 +220,13 @@ body
 	left: $x
 	top: $y
 
+	transform: scale(1)
+
 	width: $width
 	height: $height
+
+	img
+		width: 100%
 
 @mixin object-dark()
 	background-color: rgba(0, 0, 0, .95)
@@ -200,12 +234,22 @@ body
 // bed
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
+
 // switch
 .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
+
 // cupboard
 .cupboard
 	@include objects(60px, 60px, var(--object-x), var(--object-y))
+
+// paperball
+.paperball
+	@include objects(10px, 10px, var(--object-x), var(--object-y))
+	transform-origin: center
+	transition: all .5s ease
+.bedroom-paper-item-radio:checked ~ .paperball
+	transform: scale(0)
 
 // ROOM DARK INTERACTION
 .room-dark .switch
@@ -215,7 +259,7 @@ body
 // -----------------------------
 // ITEMS
 
-.items-section
+.items-board
 	display: flex
 	flex-direction: column
 
@@ -226,61 +270,63 @@ body
 	left: 0
 	z-index: 5
 
-	.item-block
+	.items-list
 		display: flex
 		flex-direction: row
 
-		width: 18px
-		height: 18px
+		.item-block
+			display: none
+			width: 18px
+			height: 18px
 
-		padding: 2px
-		margin: 2px
-		border: 1px solid #eee
+			padding: 2px
+			margin: 2px
+			border: 1px solid #eee
+
+.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block
+	display: block
+
+// -----------------------------
+// ITEMS DESCRIPTION
+
+.bedroom-paperball-1-description-checkbox
+	display: none
+
+.items-description-board
+	@include board()
+
+	position: absolute
+
+	top: 368px
+	left: 0
+
+.bedroom-paperball-1-description-checkbox:checked ~ .paperball-1-description
+	width: calc(300px - 32px)
+	height: 30px
+	padding: 16px
+	border: 1px solid #eee
+	overflow-y: auto
 
 // -----------------------------
 // MESSAGE TRIGGERS
 
-.room-message
+.room-message-board
+	@include board()
+
 	position: absolute
 	top: calc(-1em - 88px)
 	left: 0
 
-	background-color: #222
-
-	width: 300px
-	height: 0
-	overflow-y: hidden
-
-	transition: all .5s ease
-
-	display: flex
-	align-items: center
-
-	font-size: 0.5em
-
-	box-sizing: border-box
-
-	padding: 0 16px
-	border: 1px solid #eee
-
-	span
-		vertical-align: middle
-
-.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
-.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off
-	width: 300px
-	height: 0
-	padding: 0 16px
-	overflow-y: hidden
-
 .bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
+.bedroom-paper-item-radio:checked ~ .message-trigger-paperball-taken,
 .kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off
-	width: 300px
-	height: 62px
+	width: calc(300px - 32px)
+	height: 30px
 	padding: 16px
 	overflow-y: auto
+	border: 1px solid #eee
 
 // -----------------------------
 // ANIMATIONS
