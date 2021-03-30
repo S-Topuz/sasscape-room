@@ -184,10 +184,9 @@ body {
 .prolog-label {
   display: block;
   margin: 16px; }
-  .intro-label .last,
-  .instruction-label .last,
-  .prolog-label .last {
-    animation: blink 0.5s ease infinite; }
+
+.last {
+  animation: blink 0.5s ease infinite; }
 
 .bedroom-paper-item-radio,
 .bedroom-item-key-radio,
