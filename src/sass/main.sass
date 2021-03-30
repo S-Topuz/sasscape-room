@@ -40,6 +40,22 @@ body
 // -----------------------------
 // SCENE INTERFACE
 
+// board
+@mixin board()
+	position: absolute
+	z-index: 5
+
+	box-sizing: content-box
+	overflow-y: hidden
+
+	background-color: #222
+	width: 300px
+	height: 0
+	font-size: 0.8em
+
+	transition: all .5s ease
+
+
 // container
 .container
 	position: relative
@@ -55,7 +71,7 @@ body
 	height: var(--height)
 
 	position: absolute
-	top: 500px
+	top: 1000px
 
 	transition: all 1s ease
 
@@ -110,25 +126,28 @@ body
 
 // dark background switcher
 .bedroom-switch-checkbox,
+.bedroom-vase-1-switch-checkbox,
 .kitchen-switch-checkbox
 	display: none
 
-.bedroom-switch-checkbox:checked ~ .room-dark,
-.kitchen-switch-checkbox:checked ~ .room-dark,
+.bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark,
+.kitchen-switch-checkbox:checked ~ .scene-1-room-2 .room-dark,
 	display: none
 
-.bedroom-switch-checkbox ~ .scene-1-nav-1,
-.kitchen-switch-checkbox ~ .scene-1-nav-2 label:last-child,
-	display: none
+.bedroom-switch-checkbox ~ .scene-1-room
+	.scene-1-nav-1, .scene-1-nav-2 label:last-child,
+		display: none
 
-.bedroom-switch-checkbox:checked ~ .scene-1-nav-1,
-.kitchen-switch-checkbox:checked ~ .scene-1-nav-2 label:last-child,
-	display: inline
+.bedroom-switch-checkbox:checked ~ .scene-1-room
+	.scene-1-nav-1,
+	.scene-1-nav-2 label:last-child,
+		display: inline
 
 // scene switcher
 .scene-radio, .scene-1-room-radio
 	display: none
-	position: absolute
+	position: relative
+	// top: 400px
 
 .scene-radio:checked
 	+ .scene
@@ -139,12 +158,13 @@ body
 	background-color: #222
 
 	position: absolute
-	z-index: 3
 
 	@if ($orientation == "left" or $orientation == "right")
 		width: 310px
-		height: 600px
+		height: 1500px
 
+		z-index: 5
+		
 		top: -200px
 		
 		@if ($orientation == "left")
@@ -160,6 +180,8 @@ body
 
 		@if ($orientation == "bottom")
 			top: 301px
+			z-index: 3
+
 		@else
 			top: -300px
 
@@ -179,11 +201,16 @@ body
 	display: block
 	margin: 16px
 
-	.last
-		animation: blink .5s ease infinite
+.last
+	animation: blink .5s ease infinite
 
 // -----------------------------
 // OBJECTS
+.bedroom-paper-item-radio,
+.bedroom-item-key-radio,
+.open-door-event-radio
+	display: none
+	position: absolute
 
 @mixin objects($width, $height, $x, $y)
 	position: absolute
@@ -194,18 +221,76 @@ body
 	width: $width
 	height: $height
 
+	transform-origin: bottom
+	transform: scale(1)
+	transition: all .5s ease
+
+
+	img
+		width: 100%
+		height: 100%
+
 @mixin object-dark()
 	background-color: rgba(0, 0, 0, .95)
 
 // bed
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
+
+// bed
+.door-right-side
+	@include objects(40px, 40px, var(--object-x), var(--object-y))
+
+	transform-origin: left
+	transform: skewY(68deg) rotateY(65deg)
+.door-right-side-room
+	@include objects(20px, 39.5px, var(--object-x), var(--object-y))
+
+	transform-origin: left
+	transform: skewY(68deg) rotateY(65deg)
+
+	background-color: #222
+.open-door-event-radio:checked
+	~ .scene-1-room
+		.door-right-side
+			transform: skewY(68deg) rotateY(80deg)
+	~ .items-board
+		.item-bedroom-key-block
+			display: none !important
+
 // switch
 .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
+
 // cupboard
 .cupboard
 	@include objects(60px, 60px, var(--object-x), var(--object-y))
+
+// key
+.key-vertical
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
+.bedroom-vase-1-switch-checkbox:checked ~ .scene-1-room
+	.key-vertical
+		top: 145px
+.bedroom-item-key-radio:checked ~ .scene-1-room
+	.key-vertical
+		transform: scale(0)
+
+	.door-right-side-locked
+		display: none
+
+// paperball
+.paperball
+	@include objects(10px, 10px, var(--object-x), var(--object-y))
+	transform-origin: center
+	transition: all .5s ease
+.bedroom-paper-item-radio:checked ~ .scene-1-room
+	.paperball
+		transform: scale(0)
+
+// vase
+.vase
+	@include objects(30px, 30px, var(--object-x), var(--object-y))
 
 // ROOM DARK INTERACTION
 .room-dark .switch
@@ -215,7 +300,7 @@ body
 // -----------------------------
 // ITEMS
 
-.items-section
+.items-board
 	display: flex
 	flex-direction: column
 
@@ -226,61 +311,76 @@ body
 	left: 0
 	z-index: 5
 
-	.item-block
+	.items-list
 		display: flex
 		flex-direction: row
 
-		width: 18px
-		height: 18px
+		.item-block
+			display: none
 
-		padding: 2px
-		margin: 2px
-		border: 1px solid #eee
+			background-color: #222
+			border: 1px solid #eee
+			
+			width: 18px
+			height: 18px
+			padding: 2px
+			margin: 2px
+
+			transition: all .5s ease
+
+
+.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block
+	display: block
+
+.bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block
+	display: block
+
+// -----------------------------
+// ITEMS DESCRIPTION
+
+.bedroom-paperball-1-description-radio,
+.bedroom-key-description-radio,
+	display: none
+
+.items-description-board
+	@include board()
+
+	position: absolute
+
+	top: 368px
+	left: 0
+
+.bedroom-paperball-1-description-radio:checked ~ .paperball-1-description,
+.bedroom-key-description-radio:checked ~ .bedroom-key-description
+	height: 100px
+	overflow-y: auto
+
+.open-door-event-radio:checked ~ .bedroom-key-description
+	height: 0 !important
+
+.bedroom-paperball-1-description-radio:checked ~ .items-board .item-paperball-1-block,
+.bedroom-key-description-radio:checked ~ .items-board .item-bedroom-key-block
+	background-color: #eee
+
 
 // -----------------------------
 // MESSAGE TRIGGERS
 
-.room-message
+.room-message-board
+	@include board()
+
 	position: absolute
-	top: calc(-1em - 88px)
+	top: calc(-1em - 118px)
 	left: 0
 
-	background-color: #222
-
-	width: 300px
-	height: 0
-	overflow-y: hidden
-
-	transition: all .5s ease
-
-	display: flex
-	align-items: center
-
-	font-size: 0.5em
-
-	box-sizing: border-box
-
-	padding: 0 16px
-	border: 1px solid #eee
-
-	span
-		vertical-align: middle
-
-.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
-.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off
-	width: 300px
-	height: 0
-	padding: 0 16px
-	overflow-y: hidden
-
-.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
-.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
+.bedroom-switch-checkbox:checked ~ .scene-1-room .message-trigger-bedroom-turn-on,
+.bedroom-paper-item-radio:checked ~ .scene-1-room .message-trigger-paperball-taken,
+.bedroom-item-key-radio:checked ~ .scene-1-room .message-trigger-bedroom-key-taken,
+.kitchen-switch-checkbox:checked ~ .scene-1-room .message-trigger-kitchen-turn-on,
+.open-door-event-radio:checked ~ .scene-1-room .message-trigger-bedroom-unlocked,
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off
-	width: 300px
-	height: 62px
-	padding: 16px
-	overflow-y: auto
+	height: 82px
 
 // -----------------------------
 // ANIMATIONS

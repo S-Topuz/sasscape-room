@@ -14,8 +14,7 @@
 					 id="intro" 
 					 checked />
 	
-		<label class="scene intro"
-					 for="prolog-1">
+		<label class="scene intro" for="prolog-1">
 			<label class="intro-label">
 				Escape roo<span class="last">m</span>
 			</label>
@@ -31,8 +30,7 @@
 		       class="scene-radio"
 		       id="prolog-1" />
 
-		<label class="scene prolog"
-		       for="prolog-2">
+		<label class="scene prolog" for="prolog-2">
 			<span class="prolog-label">
 				Huh? Where am I<span class="last">?</span></span>
 			</span>
@@ -47,12 +45,11 @@
 		</label>
 
 		<input type="radio"
-	       name="scene"
-	       class="scene-radio"
-	       id="prolog-2" />
+	 		     name="scene"
+	    	   class="scene-radio"
+	      	 id="prolog-2" />
 
-		<label class="scene prolog"
-		       for="instruction">
+		<label class="scene prolog" for="instruction">
 			<span class="prolog-label">
 				I need to get out of here<span class="last">!</span>
 			</span>
@@ -68,8 +65,7 @@
 		       class="scene-radio"
 		       id="instruction" />
 
-		<label class="scene instruction"
-		       for="scene-1">
+		<label class="scene instruction" for="scene-1">
 			<span class="instruction-label">
 				You have to complete the puzzle to get out of the house<span class="last">.</span>
 			</span>
@@ -86,18 +82,56 @@
 		       id="scene-1" />
 
 		<form class="scene scene-1">
+			<!-- bedroom object switcher -->
+			<input type="checkbox"
+			       class="bedroom-switch-checkbox"
+			       name="bedroom-lamp"
+			       id="bedroom-lamp">
+
+			<input type="checkbox"
+			       class="bedroom-vase-1-switch-checkbox"
+			       name="bedroom-vase-1-switch"
+			       id="bedroom-vase-1-switch">
+
+			<input type="radio"
+			       class="bedroom-paper-item-radio bedroom-item-paperball-1"
+			       name="bedroom-item-paperball-radio"
+			       id="bedroom-item-paperball-1">
+
+			<input type="radio"
+			       class="bedroom-item-key-radio bedroom-item-key"
+			       name="bedroom-item-key-radio"
+			       id="bedroom-item-key">
+
+			<input type="radio"
+			       class="open-door-event-radio"
+			       name="open-door-event-radio"
+			       id="open-door-event">
+
+			<!-- kitchen object switcher -->
+				<input type="checkbox"
+				       class="kitchen-switch-checkbox"
+				       name="kitchen-lamp"
+				       id="kitchen-lamp">
+
+			<!-- bedroom item description switcher -->
+			<input type="radio"
+			       class="bedroom-item-description-radio
+			              bedroom-paperball-1-description-radio"
+			       name="item-description"
+			       id="bedroom-paperball-1-description">
+			<input type="radio"
+			       class="bedroom-item-description-radio
+			              bedroom-key-description-radio"
+			       name="item-description"
+			       id="bedroom-key-description">
+
 			<input type="radio"
 		       class="scene-1-room-radio"
 		       name="scene-1-room"
 		       id="scene-1-room-1"
 		       checked />
 			<div class="scene-1-room scene-1-room-1">
-				<!-- bedroom object switcher -->
-				<input type="checkbox"
-				       class="bedroom-switch-checkbox"
-				       name="bedroom-lamp"
-				       id="bedroom-lamp">
-
 				<div class="scene-1-label">Bedroo<span class="last">m</span></div>
 
 				<span class="scene-1-nav-1">
@@ -105,6 +139,20 @@
 				</span>
 
 				<!-- BEDROOM OBJECTS -->
+				<!-- beedroom door -->
+				<label class="door-right-side-room"
+							 for="scene-1-room-2"
+				       style="--object-x: 278px; --object-y: 207px"></label>
+				<label class="door-right-side"
+				       for="open-door-event"
+				       style="--object-x: 275px; --object-y: 200px">
+					<img src="assets/objects/door.svg" alt />
+				</label>
+				<div class="door-right-side door-right-side-locked"
+				       style="--object-x: 275px; --object-y: 200px">
+					<img src="assets/objects/door.svg" alt />
+				</div>
+
 				<!-- beedroom bed -->
 				<div class="bed" style="--object-x: 100px; --object-y: 170px">
 					<img src="assets/objects/bed.svg" alt data-tooltip="bed" />
@@ -114,7 +162,25 @@
 				<div class="cupboard" style="--object-x: 35px; --object-y: 190px">
 					<img src="assets/objects/cupboard.svg" alt data-tooltip="bed" />
 				</div>
-				
+
+				<!-- key inside the vase -->
+				<label class="key-vertical" style="--object-x: 40px; --object-y: 180px" for="bedroom-item-key">
+					<img src="assets/objects/bedroom-key.svg" alt />
+				</label>	
+
+				<!-- bedroom vases -->
+				<label class="vase" style="--object-x: 35px; --object-y: 170px" for="bedroom-vase-1-switch">
+					<img src="assets/objects/vase.svg" alt data-tooltip="vase" />
+				</label>
+				<div class="vase" style="--object-x: 65px; --object-y: 170px">
+					<img src="assets/objects/vase.svg" alt data-tooltip="vase" />
+				</div>
+
+				<!-- paper ball under the bed -->
+				<label class="paperball" style="--object-x: 170px; --object-y: 240px" for="bedroom-item-paperball-1">
+					<img src="assets/objects/paper-ball.svg" alt data-tooltip="paper ball" />
+				</label>
+
 				<!-- bedroom switch -->
 				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp">
 					<img src="assets/objects/switch.svg" alt data-tooltip="bedroom switch" />
@@ -126,26 +192,33 @@
 				</div>
 
 				<!-- bedroom message triggers -->
-				<div class="room-message message-trigger-bedroom-turn-off">
-					<span>This place is so dark. I need some light so I can see where am I.</span>
+				<div class="room-message-board message-trigger-bedroom-turn-off">
+					<span>This place is so dark. I need some light so I can see where am I<span class="last">.</span></span>
 				</div>
 
-				<div class="room-message message-trigger-bedroom-turn-on">
-					<span>Finally I can turn on the light. It seems like a bedroom. I need to get out of here.</span>
+				<div class="room-message-board message-trigger-bedroom-turn-on">
+					<span>Finally I can turn on the light. It seems like a bedroom. I need to get out of here<span class="last">.</span></span>
+				</div>
+
+				<div class="room-message-board message-trigger-paperball-taken">
+					<span>There's a paper ball under the bed. I wonder something useful in this paper<span class="last">.</span></span>
+				</div>
+
+				<div class="room-message-board message-trigger-bedroom-key-taken">
+					<span>Finally got a bedroom key. Now I can open this door with this key<span class="last">.</span></span>
+				</div>
+
+				<div class="room-message-board message-trigger-bedroom-unlocked">
+					<span>The key works. Now the door's unlocked and I can get out<span class="last">.</span></span>
 				</div>
 			</div>
 
+			<!-- ROOM 2 - KITCHEN -->
 			<input type="radio"
 		       class="scene-1-room-radio"
 		       name="scene-1-room"
 		       id="scene-1-room-2" />
 			<div class="scene-1-room scene-1-room-2">
-				<!-- kitchen object switcher -->
-				<input type="checkbox"
-				       class="kitchen-switch-checkbox"
-				       name="kitchen-lamp"
-				       id="kitchen-lamp">
-
 				<div class="scene-1-label">
 					Kitche<span class="last">n</span>
 				</div>
@@ -166,15 +239,16 @@
 				</div>
 
 				<!-- bedroom message triggers -->
-				<div class="room-message message-trigger-kitchen-turn-off">
-					<span>Aw, come on! Don't this room again!</span>
+				<div class="room-message-board message-trigger-kitchen-turn-off">
+					<span>Aw, come on! Don't this room again<span class="last">!</span></span>
 				</div>
 
-				<div class="room-message message-trigger-kitchen-turn-on">
-					<span>Lights on! Now let's find something to get out.</span>
+				<div class="room-message-board message-trigger-kitchen-turn-on">
+					<span>Lights on! Now let's find something to get out<span class="last">.</span></span>
 				</div>
 			</div>
 			
+			<!-- ROOM 3 - LIVING ROOM -->
 			<input type="radio"
 		       class="scene-1-room-radio"
 		       name="scene-1-room"
@@ -191,6 +265,7 @@
 				</span>
 			</div>
 
+			<!-- ROOM 4 - STUDY ROOM -->
 			<input type="radio"
 		       class="scene-1-room-radio"
 		       name="scene-1-room"
@@ -206,13 +281,43 @@
 				</span>
 			</div>
 
-			<!-- ITEMS SECTION -->
-			<div class="items-section">
-				ITEMS
+			<div class="items-board">
+				<span>ITEM<span class="last">S</span></span>
 
-				<label class="item-block">
-					<img src="assets/items/item-document.svg" alt />
-				</label>
+				<div class="items-list">
+					<label class="item-block item-paperball-1-block"
+					       for="bedroom-paperball-1-description">
+						<img src="assets/items/item-document.svg" alt />
+					</label>
+
+					<label class="item-block item-bedroom-key-block"
+					       for="bedroom-key-description">
+						<img src="assets/items/bedroom-key.svg" alt />
+					</label>
+				</div>
+			</div>
+
+			<!-- description board -->
+			<div class="items-description-board paperball-1-description">
+				<span>
+					<strong>Paper ball document</strong><br />
+					<br />
+					There's something written in this paper.<br />
+					<br />
+					<em>
+						There is a key to get out of the bedroom. You need to find it inside the vase (I don't know which vase has the key) and use it for the first step to escape.<br />
+						<br />
+						Letter code: #9
+					</em>
+				</span>
+			</div>
+
+			<div class="items-description-board bedroom-key-description">
+				<span>
+					<strong>Bedroom key</strong><br />
+					<br />
+					Seems it's useful for open the bedroom door.
+				</span>
 			</div>
 		</form>
 

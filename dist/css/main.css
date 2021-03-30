@@ -36,7 +36,7 @@ body {
   width: var(--width);
   height: var(--height);
   position: absolute;
-  top: 500px;
+  top: 1000px;
   transition: all 1s ease; }
   .scene .scene-1-label {
     position: absolute;
@@ -130,24 +130,24 @@ body {
   background-color: rgba(0, 0, 0, 0.95); }
 
 .bedroom-switch-checkbox,
+.bedroom-vase-1-switch-checkbox,
 .kitchen-switch-checkbox {
   display: none; }
 
-.bedroom-switch-checkbox:checked ~ .room-dark,
-.kitchen-switch-checkbox:checked ~ .room-dark {
+.bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark,
+.kitchen-switch-checkbox:checked ~ .scene-1-room-2 .room-dark {
   display: none; }
 
-.bedroom-switch-checkbox ~ .scene-1-nav-1,
-.kitchen-switch-checkbox ~ .scene-1-nav-2 label:last-child {
+.bedroom-switch-checkbox ~ .scene-1-room .scene-1-nav-1, .bedroom-switch-checkbox ~ .scene-1-room .scene-1-nav-2 label:last-child {
   display: none; }
 
-.bedroom-switch-checkbox:checked ~ .scene-1-nav-1,
-.kitchen-switch-checkbox:checked ~ .scene-1-nav-2 label:last-child {
+.bedroom-switch-checkbox:checked ~ .scene-1-room .scene-1-nav-1,
+.bedroom-switch-checkbox:checked ~ .scene-1-room .scene-1-nav-2 label:last-child {
   display: inline; }
 
 .scene-radio, .scene-1-room-radio {
   display: none;
-  position: absolute; }
+  position: relative; }
 
 .scene-radio:checked + .scene {
   top: 0; }
@@ -155,27 +155,27 @@ body {
 .scene-closure-bottom {
   background-color: #222;
   position: absolute;
-  z-index: 3;
   width: 2000px;
   height: 500px;
   left: -600px;
-  top: 301px; }
+  top: 301px;
+  z-index: 3; }
 
 .scene-closure-left {
   background-color: #222;
   position: absolute;
-  z-index: 3;
   width: 310px;
-  height: 600px;
+  height: 1500px;
+  z-index: 5;
   top: -200px;
   left: -312px; }
 
 .scene-closure-right {
   background-color: #222;
   position: absolute;
-  z-index: 3;
   width: 310px;
-  height: 600px;
+  height: 1500px;
+  z-index: 5;
   top: -200px;
   left: 312px; }
 
@@ -184,10 +184,15 @@ body {
 .prolog-label {
   display: block;
   margin: 16px; }
-  .intro-label .last,
-  .instruction-label .last,
-  .prolog-label .last {
-    animation: blink 0.5s ease infinite; }
+
+.last {
+  animation: blink 0.5s ease infinite; }
+
+.bedroom-paper-item-radio,
+.bedroom-item-key-radio,
+.open-door-event-radio {
+  display: none;
+  position: absolute; }
 
 .bed {
   position: absolute;
@@ -195,7 +200,51 @@ body {
   left: var(--object-x);
   top: var(--object-y);
   width: 100px;
-  height: 100px; }
+  height: 100px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .bed img {
+    width: 100%;
+    height: 100%; }
+
+.door-right-side {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 40px;
+  height: 40px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  transform-origin: left;
+  transform: skewY(68deg) rotateY(65deg); }
+  .door-right-side img {
+    width: 100%;
+    height: 100%; }
+
+.door-right-side-room {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 39.5px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  transform-origin: left;
+  transform: skewY(68deg) rotateY(65deg);
+  background-color: #222; }
+  .door-right-side-room img {
+    width: 100%;
+    height: 100%; }
+
+.open-door-event-radio:checked ~ .scene-1-room .door-right-side {
+  transform: skewY(68deg) rotateY(80deg); }
+.open-door-event-radio:checked ~ .items-board .item-bedroom-key-block {
+  display: none !important; }
 
 .switch {
   position: absolute;
@@ -203,7 +252,13 @@ body {
   left: var(--object-x);
   top: var(--object-y);
   width: 18px;
-  height: 18px; }
+  height: 18px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .switch img {
+    width: 100%;
+    height: 100%; }
 
 .cupboard {
   position: absolute;
@@ -211,7 +266,68 @@ body {
   left: var(--object-x);
   top: var(--object-y);
   width: 60px;
-  height: 60px; }
+  height: 60px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .cupboard img {
+    width: 100%;
+    height: 100%; }
+
+.key-vertical {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 20px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .key-vertical img {
+    width: 100%;
+    height: 100%; }
+
+.bedroom-vase-1-switch-checkbox:checked ~ .scene-1-room .key-vertical {
+  top: 145px; }
+
+.bedroom-item-key-radio:checked ~ .scene-1-room .key-vertical {
+  transform: scale(0); }
+.bedroom-item-key-radio:checked ~ .scene-1-room .door-right-side-locked {
+  display: none; }
+
+.paperball {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 10px;
+  height: 10px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  transform-origin: center;
+  transition: all 0.5s ease; }
+  .paperball img {
+    width: 100%;
+    height: 100%; }
+
+.bedroom-paper-item-radio:checked ~ .scene-1-room .paperball {
+  transform: scale(0); }
+
+.vase {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 30px;
+  height: 30px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .vase img {
+    width: 100%;
+    height: 100%; }
 
 .room-dark .switch {
   position: absolute;
@@ -220,9 +336,15 @@ body {
   top: var(--object-y);
   width: 18px;
   height: 18px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
   background-color: rgba(0, 0, 0, 0.95); }
+  .room-dark .switch img {
+    width: 100%;
+    height: 100%; }
 
-.items-section {
+.items-board {
   display: flex;
   flex-direction: column;
   width: var(--width);
@@ -230,48 +352,77 @@ body {
   top: 310px;
   left: 0;
   z-index: 5; }
-  .items-section .item-block {
+  .items-board .items-list {
     display: flex;
-    flex-direction: row;
-    width: 18px;
-    height: 18px;
-    padding: 2px;
-    margin: 2px;
-    border: 1px solid #eee; }
+    flex-direction: row; }
+    .items-board .items-list .item-block {
+      display: none;
+      background-color: #222;
+      border: 1px solid #eee;
+      width: 18px;
+      height: 18px;
+      padding: 2px;
+      margin: 2px;
+      transition: all 0.5s ease; }
 
-.room-message {
+.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block {
+  display: block; }
+
+.bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block {
+  display: block; }
+
+.bedroom-paperball-1-description-radio,
+.bedroom-key-description-radio {
+  display: none; }
+
+.items-description-board {
   position: absolute;
-  top: calc(-1em - 88px);
-  left: 0;
+  z-index: 5;
+  box-sizing: content-box;
+  overflow-y: hidden;
   background-color: #222;
   width: 300px;
   height: 0;
-  overflow-y: hidden;
+  font-size: 0.8em;
   transition: all 0.5s ease;
-  display: flex;
-  align-items: center;
-  font-size: 0.5em;
-  box-sizing: border-box;
-  padding: 0 16px;
-  border: 1px solid #eee; }
-  .room-message span {
-    vertical-align: middle; }
+  position: absolute;
+  top: 368px;
+  left: 0; }
 
-.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-off,
-.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-off {
+.bedroom-paperball-1-description-radio:checked ~ .paperball-1-description,
+.bedroom-key-description-radio:checked ~ .bedroom-key-description {
+  height: 100px;
+  overflow-y: auto; }
+
+.open-door-event-radio:checked ~ .bedroom-key-description {
+  height: 0 !important; }
+
+.bedroom-paperball-1-description-radio:checked ~ .items-board .item-paperball-1-block,
+.bedroom-key-description-radio:checked ~ .items-board .item-bedroom-key-block {
+  background-color: #eee; }
+
+.room-message-board {
+  position: absolute;
+  z-index: 5;
+  box-sizing: content-box;
+  overflow-y: hidden;
+  background-color: #222;
   width: 300px;
   height: 0;
-  padding: 0 16px;
-  overflow-y: hidden; }
+  font-size: 0.8em;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: calc(-1em - 118px);
+  left: 0; }
 
-.bedroom-switch-checkbox:checked ~ .message-trigger-bedroom-turn-on,
-.kitchen-switch-checkbox:checked ~ .message-trigger-kitchen-turn-on,
+.bedroom-switch-checkbox:checked ~ .scene-1-room .message-trigger-bedroom-turn-on,
+.bedroom-paper-item-radio:checked ~ .scene-1-room .message-trigger-paperball-taken,
+.bedroom-item-key-radio:checked ~ .scene-1-room .message-trigger-bedroom-key-taken,
+.kitchen-switch-checkbox:checked ~ .scene-1-room .message-trigger-kitchen-turn-on,
+.open-door-event-radio:checked ~ .scene-1-room .message-trigger-bedroom-unlocked,
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off {
-  width: 300px;
-  height: 62px;
-  padding: 16px;
-  overflow-y: auto; }
+  height: 82px; }
 
 @keyframes blink {
   from, to {

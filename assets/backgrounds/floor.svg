@@ -31,12 +31,12 @@
        transform="matrix(0.98176325,0,0,1.0115962,1.3849393,-1.1937407)">
       <path
          id="rect10"
-         style="fill:#ffd5d5;stroke-width:0.14802"
-         d="m 39.045077,60.423599 32.05595,0.0012 8.243319,19.176965 H 39.045077 Z" />
+         style="fill:#ffd5d5;stroke-width:0.148206"
+         d="m 39.045077,60.423599 32.136696,0.0012 8.264083,19.176965 H 39.045077 Z" />
       <path
          id="rect10-6"
-         style="fill:#ffd5d5;stroke-width:0.14802"
-         d="m 39.045077,60.423599 -32.05595,0.0012 -8.243319,19.176965 h 40.299269 z" />
+         style="fill:#ffd5d5;stroke-width:0.148206"
+         d="M 39.146587,60.423599 7.0098911,60.424799 -1.254192,79.601764 H 39.146587 Z" />
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458333;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
