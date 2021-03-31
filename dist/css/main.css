@@ -129,21 +129,11 @@ body {
   width: var(--width);
   background-color: rgba(0, 0, 0, 0.95); }
 
-.bedroom-switch-checkbox,
-.bedroom-vase-1-switch-checkbox,
-.kitchen-switch-checkbox {
-  display: none; }
-
-.bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark,
-.kitchen-switch-checkbox:checked ~ .scene-1-room-2 .room-dark {
+.interaction-checkbox {
   display: none; }
 
 .bedroom-switch-checkbox ~ .scene-1-room .scene-1-nav-1, .bedroom-switch-checkbox ~ .scene-1-room .scene-1-nav-2 label:last-child {
   display: none; }
-
-.bedroom-switch-checkbox:checked ~ .scene-1-room .scene-1-nav-1,
-.bedroom-switch-checkbox:checked ~ .scene-1-room .scene-1-nav-2 label:last-child {
-  display: inline; }
 
 .scene-radio, .scene-1-room-radio {
   display: none;
@@ -188,9 +178,7 @@ body {
 .last {
   animation: blink 0.5s ease infinite; }
 
-.bedroom-paper-item-radio,
-.bedroom-item-key-radio,
-.open-door-event-radio {
+.trigger-radio {
   display: none;
   position: absolute; }
 
@@ -208,6 +196,22 @@ body {
     width: 100%;
     height: 100%; }
 
+.door-left-side {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 40px;
+  height: 40px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  transform-origin: left;
+  transform: skewY(-68deg) rotateY(-84deg); }
+  .door-left-side img {
+    width: 100%;
+    height: 100%; }
+
 .door-right-side {
   position: absolute;
   user-drag: none;
@@ -221,6 +225,23 @@ body {
   transform-origin: left;
   transform: skewY(68deg) rotateY(65deg); }
   .door-right-side img {
+    width: 100%;
+    height: 100%; }
+
+.door-left-side-room {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 39.5px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  transform-origin: left;
+  transform: skewY(-68deg) rotateY(-65deg);
+  background-color: #222; }
+  .door-left-side-room img {
     width: 100%;
     height: 100%; }
 
@@ -241,10 +262,19 @@ body {
     width: 100%;
     height: 100%; }
 
-.open-door-event-radio:checked ~ .scene-1-room .door-right-side {
-  transform: skewY(68deg) rotateY(80deg); }
-.open-door-event-radio:checked ~ .items-board .item-bedroom-key-block {
-  display: none !important; }
+.flower {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 20px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .flower img {
+    width: 100%;
+    height: 100%; }
 
 .switch {
   position: absolute;
@@ -288,14 +318,6 @@ body {
     width: 100%;
     height: 100%; }
 
-.bedroom-vase-1-switch-checkbox:checked ~ .scene-1-room .key-vertical {
-  top: 145px; }
-
-.bedroom-item-key-radio:checked ~ .scene-1-room .key-vertical {
-  transform: scale(0); }
-.bedroom-item-key-radio:checked ~ .scene-1-room .door-right-side-locked {
-  display: none; }
-
 .paperball {
   position: absolute;
   user-drag: none;
@@ -312,8 +334,19 @@ body {
     width: 100%;
     height: 100%; }
 
-.bedroom-paper-item-radio:checked ~ .scene-1-room .paperball {
-  transform: scale(0); }
+.spray {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 20px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .spray img {
+    width: 100%;
+    height: 100%; }
 
 .vase {
   position: absolute;
@@ -344,6 +377,92 @@ body {
     width: 100%;
     height: 100%; }
 
+.bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark {
+  display: none; }
+.bedroom-switch-checkbox:checked ~ .scene-1-room-1 .message-trigger-bedroom-turn-on {
+  height: 82px; }
+
+.kitchen-switch-checkbox:checked ~ .scene-1-room-2 .room-dark {
+  display: none; }
+.kitchen-switch-checkbox:checked ~ .scene-1-room-2 .message-trigger-kitchen-turn-on {
+  height: 82px; }
+
+.bedroom-cupboard-1-checkbox:checked ~ .scene-1-room-1 .cupboard-closed {
+  display: none; }
+
+.bedroom-paper-item-radio:checked ~ .scene-1-room-1 .paperball-under-bed {
+  transform: scale(0); }
+.bedroom-paper-item-radio:checked ~ .scene-1-room-1 .message-trigger-paperball-taken {
+  height: 82px; }
+.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block {
+  display: block; }
+
+.bedroom-paper-2-item-radio:checked ~ .scene-1-room-1 .paperball-cupboard {
+  transform: scale(0); }
+.bedroom-paper-2-item-radio:checked ~ .items-board .item-paperball-2-block {
+  display: block; }
+
+.bedroom-vase-1-switch-checkbox:checked ~ .scene-1-room-1 .key-vertical {
+  top: 145px; }
+
+.bedroom-vase-2-switch-checkbox:checked ~ .scene-1-room-1 .flower {
+  top: 152px; }
+
+.bedroom-item-key-radio:checked ~ .scene-1-room-1 .key-vertical {
+  transform: scale(0); }
+.bedroom-item-key-radio:checked ~ .scene-1-room-1 .door-right-side-locked {
+  display: none; }
+.bedroom-item-key-radio:checked ~ .scene-1-room-1 .message-trigger-bedroom-key-taken {
+  height: 82px; }
+.bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block {
+  display: block; }
+
+.bedroom-mouse-spray-item-radio:checked ~ .scene-1-room-1 .mouse-spray {
+  transform: scale(0); }
+.bedroom-mouse-spray-item-radio:checked ~ .items-board .item-mouse-spray-block {
+  display: block; }
+
+.open-door-event-radio:checked ~ .scene-1-room-1 .door-right-side {
+  transform: skewY(68deg) rotateY(80deg); }
+.open-door-event-radio:checked ~ .scene-1-room-1 .message-trigger-bedroom-unlocked {
+  height: 82px; }
+.open-door-event-radio:checked ~ .scene-1-room-1 .scene-1-nav-1 {
+  display: inline; }
+.open-door-event-radio:checked ~ .items-board .item-bedroom-key-block {
+  display: none !important; }
+.open-door-event-radio:checked ~ .bedroom-key-description {
+  height: 0 !important; }
+
+.bedroom-paperball-1-description-radio:checked ~ .paperball-1-description {
+  height: 100px;
+  overflow-y: auto; }
+.bedroom-paperball-1-description-radio:checked ~ .items-board .item-paperball-1-block {
+  background-color: #eee; }
+
+.bedroom-paperball-2-description-radio:checked ~ .paperball-2-description {
+  height: 100px;
+  overflow-y: auto; }
+.bedroom-paperball-2-description-radio:checked ~ .items-board .item-paperball-2-block {
+  background-color: #eee; }
+
+.bedroom-key-description-radio:checked ~ .bedroom-key-description {
+  height: 100px;
+  overflow-y: auto; }
+.bedroom-key-description-radio:checked ~ .items-board .item-bedroom-key-block {
+  background-color: #eee; }
+
+.item-fingerprint-description-radio:checked ~ .item-fingerprint-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-fingerprint-description-radio:checked ~ .items-board .item-fingerprint-block {
+  background-color: #eee; }
+
+.item-mouse-spray-description-radio:checked ~ .item-mouse-spray-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-mouse-spray-description-radio:checked ~ .items-board .item-mouse-spray-block {
+  background-color: #eee; }
+
 .items-board {
   display: flex;
   flex-direction: column;
@@ -365,14 +484,7 @@ body {
       margin: 2px;
       transition: all 0.5s ease; }
 
-.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block {
-  display: block; }
-
-.bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block {
-  display: block; }
-
-.bedroom-paperball-1-description-radio,
-.bedroom-key-description-radio {
+.item-description-radio {
   display: none; }
 
 .items-description-board {
@@ -389,18 +501,6 @@ body {
   top: 368px;
   left: 0; }
 
-.bedroom-paperball-1-description-radio:checked ~ .paperball-1-description,
-.bedroom-key-description-radio:checked ~ .bedroom-key-description {
-  height: 100px;
-  overflow-y: auto; }
-
-.open-door-event-radio:checked ~ .bedroom-key-description {
-  height: 0 !important; }
-
-.bedroom-paperball-1-description-radio:checked ~ .items-board .item-paperball-1-block,
-.bedroom-key-description-radio:checked ~ .items-board .item-bedroom-key-block {
-  background-color: #eee; }
-
 .room-message-board {
   position: absolute;
   z-index: 5;
@@ -415,11 +515,6 @@ body {
   top: calc(-1em - 118px);
   left: 0; }
 
-.bedroom-switch-checkbox:checked ~ .scene-1-room .message-trigger-bedroom-turn-on,
-.bedroom-paper-item-radio:checked ~ .scene-1-room .message-trigger-paperball-taken,
-.bedroom-item-key-radio:checked ~ .scene-1-room .message-trigger-bedroom-key-taken,
-.kitchen-switch-checkbox:checked ~ .scene-1-room .message-trigger-kitchen-turn-on,
-.open-door-event-radio:checked ~ .scene-1-room .message-trigger-bedroom-unlocked,
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off {
   height: 82px; }

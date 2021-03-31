@@ -84,47 +84,82 @@
 		<form class="scene scene-1">
 			<!-- bedroom object switcher -->
 			<input type="checkbox"
-			       class="bedroom-switch-checkbox"
+			       class="interaction-checkbox bedroom-switch-checkbox"
 			       name="bedroom-lamp"
 			       id="bedroom-lamp">
 
 			<input type="checkbox"
-			       class="bedroom-vase-1-switch-checkbox"
+			       class="interaction-checkbox bedroom-cupboard-1-checkbox"
+			       name="bedroom-cupboard-1"
+			       id="bedroom-cupboard-1">
+
+			<input type="checkbox"
+			       class="interaction-checkbox bedroom-vase-1-switch-checkbox"
 			       name="bedroom-vase-1-switch"
 			       id="bedroom-vase-1-switch">
 
+			<input type="checkbox"
+			       class="interaction-checkbox bedroom-vase-2-switch-checkbox"
+			       name="bedroom-vase-2-switch"
+			       id="bedroom-vase-2-switch">
+
 			<input type="radio"
-			       class="bedroom-paper-item-radio bedroom-item-paperball-1"
-			       name="bedroom-item-paperball-radio"
+			       class="trigger-radio bedroom-paper-item-radio"
+			       name="bedroom-item-paperball-1"
 			       id="bedroom-item-paperball-1">
 
 			<input type="radio"
-			       class="bedroom-item-key-radio bedroom-item-key"
-			       name="bedroom-item-key-radio"
+			       class="trigger-radio bedroom-paper-2-item-radio"
+			       name="bedroom-item-paperball-2"
+			       id="bedroom-item-paperball-2">
+
+			<input type="radio"
+			       class="trigger-radio bedroom-mouse-spray-item-radio"
+			       name="bedroom-item-mouse-spray"
+			       id="bedroom-item-mouse-spray">
+
+			<input type="radio"
+			       class="trigger-radio bedroom-item-key-radio"
+			       name="bedroom-item-key"
 			       id="bedroom-item-key">
 
 			<input type="radio"
-			       class="open-door-event-radio"
-			       name="open-door-event-radio"
+			       class="trigger-radio open-door-event-radio"
+			       name="open-door-event"
 			       id="open-door-event">
 
 			<!-- kitchen object switcher -->
-				<input type="checkbox"
-				       class="kitchen-switch-checkbox"
-				       name="kitchen-lamp"
-				       id="kitchen-lamp">
+			<input type="checkbox"
+			       class="interaction-checkbox kitchen-switch-checkbox"
+			       name="kitchen-lamp"
+			       id="kitchen-lamp">
 
-			<!-- bedroom item description switcher -->
+			<!-- item description switcher -->
 			<input type="radio"
-			       class="bedroom-item-description-radio
+			       class="item-description-radio
 			              bedroom-paperball-1-description-radio"
 			       name="item-description"
 			       id="bedroom-paperball-1-description">
 			<input type="radio"
-			       class="bedroom-item-description-radio
+			       class="item-description-radio
+			              bedroom-paperball-2-description-radio"
+			       name="item-description"
+			       id="bedroom-paperball-2-description">
+			<input type="radio"
+			       class="item-description-radio
 			              bedroom-key-description-radio"
 			       name="item-description"
 			       id="bedroom-key-description">
+			<input type="radio"
+			       class="item-description-radio
+			              item-fingerprint-description-radio"
+			       name="item-description"
+			       id="item-fingerprint-description">
+			<input type="radio"
+			       class="item-description-radio
+			              item-mouse-spray-description-radio"
+			       name="item-description"
+			       id="item-mouse-spray-description">
 
 			<input type="radio"
 		       class="scene-1-room-radio"
@@ -153,37 +188,54 @@
 					<img src="assets/objects/door.svg" alt />
 				</div>
 
-				<!-- beedroom bed -->
+				<!-- bedroom bed -->
 				<div class="bed" style="--object-x: 100px; --object-y: 170px">
-					<img src="assets/objects/bed.svg" alt data-tooltip="bed" />
+					<img src="assets/objects/bed.svg" alt />
 				</div>
 
 				<!-- bedroom cupboard -->
-				<div class="cupboard" style="--object-x: 35px; --object-y: 190px">
-					<img src="assets/objects/cupboard.svg" alt data-tooltip="bed" />
-				</div>
+				<label class="cupboard cupboard-open" style="--object-x: 35px; --object-y: 190px" for="bedroom-cupboard-1">
+					<img src="assets/objects/cupboard-open.svg" alt />
+				</label>
+
+				<!-- objects inside the cupboard -->
+				<label class="spray mouse-spray" style="--object-x: 40px; --object-y: 212px" for="bedroom-item-mouse-spray">
+					<img src="assets/objects/mouse-spray.svg" alt/>
+				</label>
+				<label class="paperball paperball-cupboard" style="--object-x: 55px; --object-y: 215px" for="bedroom-item-paperball-2">
+					<img src="assets/objects/paper-ball2.svg" alt />
+				</label>
+
+				<label class="cupboard cupboard-closed" style="--object-x: 35px; --object-y: 190px" for="bedroom-cupboard-1">
+					<img src="assets/objects/cupboard.svg" alt />
+				</label>
 
 				<!-- key inside the vase -->
 				<label class="key-vertical" style="--object-x: 40px; --object-y: 180px" for="bedroom-item-key">
 					<img src="assets/objects/bedroom-key.svg" alt />
-				</label>	
+				</label>
+
+				<!-- key inside the vase -->
+				<div class="flower" style="--object-x: 70px; --object-y: 180px">
+					<img src="assets/objects/flower1.svg" alt />
+				</div>	
 
 				<!-- bedroom vases -->
 				<label class="vase" style="--object-x: 35px; --object-y: 170px" for="bedroom-vase-1-switch">
-					<img src="assets/objects/vase.svg" alt data-tooltip="vase" />
+					<img src="assets/objects/vase.svg" alt />
 				</label>
-				<div class="vase" style="--object-x: 65px; --object-y: 170px">
-					<img src="assets/objects/vase.svg" alt data-tooltip="vase" />
-				</div>
+				<label class="vase" style="--object-x: 65px; --object-y: 170px" for="bedroom-vase-2-switch">
+					<img src="assets/objects/vase.svg" alt />
+				</label>
 
 				<!-- paper ball under the bed -->
-				<label class="paperball" style="--object-x: 170px; --object-y: 240px" for="bedroom-item-paperball-1">
-					<img src="assets/objects/paper-ball.svg" alt data-tooltip="paper ball" />
+				<label class="paperball paperball-under-bed" style="--object-x: 170px; --object-y: 240px" for="bedroom-item-paperball-1">
+					<img src="assets/objects/paper-ball.svg" alt />
 				</label>
 
 				<!-- bedroom switch -->
 				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="bedroom-lamp">
-					<img src="assets/objects/switch.svg" alt data-tooltip="bedroom switch" />
+					<img src="assets/objects/switch.svg" alt />
 				</label>
 
 				<!-- bedroom turned off -->
@@ -228,9 +280,17 @@
 					<label for="scene-1-room-3">▶</label>
 				</span>
 
+				<label class="door-left-side-room"
+							 for="scene-1-room-1"
+				       style="--object-x: 8px; --object-y: 244px"></label>
+				<div class="door-left-side"
+				       style="--object-x: 8px; --object-y: 244px">
+					<img src="assets/objects/door.svg" alt />
+				</div>
+
 				<!-- kitchen switch -->
 				<label class="switch" style="--object-x: 230px; --object-y: 150px" for="kitchen-lamp">
-					<img src="assets/objects/switch.svg" alt data-tooltip="kitchen switch" />
+					<img src="assets/objects/switch.svg" alt />
 				</label>
 
 				<!-- kitchen turned off -->
@@ -244,7 +304,7 @@
 				</div>
 
 				<div class="room-message-board message-trigger-kitchen-turn-on">
-					<span>Lights on! Now let's find something to get out<span class="last">.</span></span>
+					<span>Lights on! Oh, look at this mess. Seems that it's time for cleaning up.<span class="last">.</span></span>
 				</div>
 			</div>
 			
@@ -290,14 +350,29 @@
 						<img src="assets/items/item-document.svg" alt />
 					</label>
 
+					<label class="item-block item-paperball-2-block"
+					       for="bedroom-paperball-2-description">
+						<img src="assets/items/note.svg" alt />
+					</label>
+
 					<label class="item-block item-bedroom-key-block"
 					       for="bedroom-key-description">
 						<img src="assets/items/bedroom-key.svg" alt />
 					</label>
+
+					<label class="item-block item-fingerprint-block"
+					       for="item-fingerprint-description">
+						<img src="assets/items/item-fingerprint.svg" alt />
+					</label>
+
+					<label class="item-block item-mouse-spray-block"
+					       for="item-mouse-spray-description">
+						<img src="assets/items/mouse-spray.svg" alt />
+					</label>
 				</div>
 			</div>
 
-			<!-- description board -->
+			<!-- items description board -->
 			<div class="items-description-board paperball-1-description">
 				<span>
 					<strong>Paper ball document</strong><br />
@@ -307,8 +382,24 @@
 					<em>
 						There is a key to get out of the bedroom. You need to find it inside the vase (I don't know which vase has the key) and use it for the first step to escape.<br />
 						<br />
-						Letter code: #9
+						P.S.: There are also something I left inside the cupboard. Check it out!<br />
+						<br />
+						Letter code: #6792
 					</em>
+				</span>
+			</div>
+
+			<div class="items-description-board paperball-2-description">
+				<span>
+					<strong>Small note</strong><br />
+					<br />
+					There is only one word written in this paper.<br />
+					<br />
+					<em>
+						FAITH<br />
+					</em>
+					<br />
+					I don't know what does this note want to tell me about.					
 				</span>
 			</div>
 
@@ -317,6 +408,22 @@
 					<strong>Bedroom key</strong><br />
 					<br />
 					Seems it's useful for open the bedroom door.
+				</span>
+			</div>
+
+			<div class="items-description-board item-fingerprint-description">
+				<span>
+					<strong>Fingerprint paper</strong><br />
+					<br />
+					This fingerprint may belongs to someone. It may be useful for unlock something.
+				</span>
+			</div>
+
+			<div class="items-description-board item-mouse-spray-description">
+				<span>
+					<strong>Mouse-spray</strong><br />
+					<br />
+					Do you know that mouses are annoying?! That's why this thing is used for. Just need a little spray and they're gone!
 				</span>
 			</div>
 		</form>

@@ -124,34 +124,8 @@ body
 
 	background-color: rgba(0, 0, 0, .95)
 
-// dark background switcher
-.bedroom-switch-checkbox,
-.bedroom-vase-1-switch-checkbox,
-.kitchen-switch-checkbox
-	display: none
-
-.bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark,
-.kitchen-switch-checkbox:checked ~ .scene-1-room-2 .room-dark,
-	display: none
-
-.bedroom-switch-checkbox ~ .scene-1-room
-	.scene-1-nav-1, .scene-1-nav-2 label:last-child,
+.scene-1-nav-1, .scene-1-nav-2 label:last-child
 		display: none
-
-.bedroom-switch-checkbox:checked ~ .scene-1-room
-	.scene-1-nav-1,
-	.scene-1-nav-2 label:last-child,
-		display: inline
-
-// scene switcher
-.scene-radio, .scene-1-room-radio
-	display: none
-	position: relative
-	// top: 400px
-
-.scene-radio:checked
-	+ .scene
-		top: 0
 
 // game-closure
 @mixin scene-closure($orientation)
@@ -206,11 +180,6 @@ body
 
 // -----------------------------
 // OBJECTS
-.bedroom-paper-item-radio,
-.bedroom-item-key-radio,
-.open-door-event-radio
-	display: none
-	position: absolute
 
 @mixin objects($width, $height, $x, $y)
 	position: absolute
@@ -237,12 +206,24 @@ body
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
 
-// bed
+// door
+.door-left-side
+	@include objects(40px, 40px, var(--object-x), var(--object-y))
+
+	transform-origin: left
+	transform: skewY(-68deg) rotateY(-84deg)
 .door-right-side
 	@include objects(40px, 40px, var(--object-x), var(--object-y))
 
 	transform-origin: left
 	transform: skewY(68deg) rotateY(65deg)
+.door-left-side-room
+	@include objects(20px, 39.5px, var(--object-x), var(--object-y))
+
+	transform-origin: left
+	transform: skewY(-68deg) rotateY(-65deg)
+
+	background-color: #222
 .door-right-side-room
 	@include objects(20px, 39.5px, var(--object-x), var(--object-y))
 
@@ -250,13 +231,10 @@ body
 	transform: skewY(68deg) rotateY(65deg)
 
 	background-color: #222
-.open-door-event-radio:checked
-	~ .scene-1-room
-		.door-right-side
-			transform: skewY(68deg) rotateY(80deg)
-	~ .items-board
-		.item-bedroom-key-block
-			display: none !important
+
+
+.flower
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
 // switch
 .switch
@@ -269,24 +247,16 @@ body
 // key
 .key-vertical
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
-.bedroom-vase-1-switch-checkbox:checked ~ .scene-1-room
-	.key-vertical
-		top: 145px
-.bedroom-item-key-radio:checked ~ .scene-1-room
-	.key-vertical
-		transform: scale(0)
-
-	.door-right-side-locked
-		display: none
 
 // paperball
 .paperball
 	@include objects(10px, 10px, var(--object-x), var(--object-y))
 	transform-origin: center
 	transition: all .5s ease
-.bedroom-paper-item-radio:checked ~ .scene-1-room
-	.paperball
-		transform: scale(0)
+
+// spray
+.spray
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
 // vase
 .vase
@@ -296,6 +266,144 @@ body
 .room-dark .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
 	@include object-dark()
+
+// -----------------------------
+// INTERACTIONS
+
+// switcher inputs
+.scene-radio,
+.scene-1-room-radio,
+.trigger-radio
+.interaction-checkbox, 
+.item-description-radio
+	display: none
+	position: relative
+
+// chenge the scene
+.scene-radio:checked
+	+ .scene
+		top: 0
+
+// bedroom switch
+.bedroom-switch-checkbox:checked ~ .scene-1-room-1
+	.room-dark
+		display: none
+	.message-trigger-bedroom-turn-on
+		height: 82px
+
+// kitchen switch
+.kitchen-switch-checkbox:checked ~ .scene-1-room-2
+	.room-dark
+		display: none
+	.message-trigger-kitchen-turn-on
+		height: 82px
+
+// toggle cupboard
+.bedroom-cupboard-1-checkbox:checked ~ .scene-1-room-1
+	.cupboard-closed
+		display: none
+
+// take paper under the bed
+.bedroom-paper-item-radio:checked
+	~ .scene-1-room-1
+		.paperball-under-bed
+			transform: scale(0)
+		.message-trigger-paperball-taken
+			height: 82px
+	~ .items-board
+		.item-paperball-1-block
+			display: block
+
+// take paper inside the cupboard
+.bedroom-paper-2-item-radio:checked
+	~ .scene-1-room-1
+		.paperball-cupboard
+			transform: scale(0)
+	~ .items-board
+		.item-paperball-2-block
+			display: block
+
+// toggle vase
+.bedroom-vase-1-switch-checkbox:checked ~ .scene-1-room-1
+	.key-vertical
+		top: 145px
+.bedroom-vase-2-switch-checkbox:checked ~ .scene-1-room-1
+	.flower
+		top: 152px
+
+// take the bedroom key
+.bedroom-item-key-radio:checked
+	~ .scene-1-room-1
+		.key-vertical
+			transform: scale(0)
+		.door-right-side-locked
+			display: none
+		.message-trigger-bedroom-key-taken
+			height: 82px
+	~ .items-board
+		.item-bedroom-key-block
+			display: block
+
+// take the mouse spray
+.bedroom-mouse-spray-item-radio:checked
+	~ .scene-1-room-1
+		.mouse-spray
+			transform: scale(0)
+	~ .items-board
+		.item-mouse-spray-block
+			display: block
+
+// unlock the bedroom door
+//// by using the bedroom key
+.open-door-event-radio:checked
+	~ .scene-1-room-1
+		.door-right-side
+			transform: skewY(68deg) rotateY(80deg)
+		.message-trigger-bedroom-unlocked
+			height: 82px
+		.scene-1-nav-1
+			display: inline
+	~ .items-board
+		.item-bedroom-key-block
+			display: none !important
+	~ .bedroom-key-description
+		height: 0 !important
+
+// show description for each item obtained
+.bedroom-paperball-1-description-radio:checked
+	~ .paperball-1-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-paperball-1-block
+		background-color: #eee
+
+.bedroom-paperball-2-description-radio:checked
+	~ .paperball-2-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-paperball-2-block
+		background-color: #eee
+
+.bedroom-key-description-radio:checked
+	~ .bedroom-key-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-bedroom-key-block
+		background-color: #eee
+
+.item-fingerprint-description-radio:checked
+	~ .item-fingerprint-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-fingerprint-block
+		background-color: #eee
+
+.item-mouse-spray-description-radio:checked
+	~ .item-mouse-spray-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-mouse-spray-block
+		background-color: #eee
 
 // -----------------------------
 // ITEMS
@@ -328,19 +436,8 @@ body
 
 			transition: all .5s ease
 
-
-.bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block
-	display: block
-
-.bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block
-	display: block
-
 // -----------------------------
 // ITEMS DESCRIPTION
-
-.bedroom-paperball-1-description-radio,
-.bedroom-key-description-radio,
-	display: none
 
 .items-description-board
 	@include board()
@@ -349,19 +446,6 @@ body
 
 	top: 368px
 	left: 0
-
-.bedroom-paperball-1-description-radio:checked ~ .paperball-1-description,
-.bedroom-key-description-radio:checked ~ .bedroom-key-description
-	height: 100px
-	overflow-y: auto
-
-.open-door-event-radio:checked ~ .bedroom-key-description
-	height: 0 !important
-
-.bedroom-paperball-1-description-radio:checked ~ .items-board .item-paperball-1-block,
-.bedroom-key-description-radio:checked ~ .items-board .item-bedroom-key-block
-	background-color: #eee
-
 
 // -----------------------------
 // MESSAGE TRIGGERS
@@ -373,11 +457,7 @@ body
 	top: calc(-1em - 118px)
 	left: 0
 
-.bedroom-switch-checkbox:checked ~ .scene-1-room .message-trigger-bedroom-turn-on,
-.bedroom-paper-item-radio:checked ~ .scene-1-room .message-trigger-paperball-taken,
-.bedroom-item-key-radio:checked ~ .scene-1-room .message-trigger-bedroom-key-taken,
-.kitchen-switch-checkbox:checked ~ .scene-1-room .message-trigger-kitchen-turn-on,
-.open-door-event-radio:checked ~ .scene-1-room .message-trigger-bedroom-unlocked,
+
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off
 	height: 82px
