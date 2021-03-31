@@ -90,14 +90,20 @@ body
 @for $i from 1 through 4
 	.scene-1-room-#{$i}
 		background-color: var(--background#{$i})
-		background-image: url("../../assets/backgrounds/floor.svg")
+		
+		@if ($i == 2)
+			background-image: url("../../assets/backgrounds/floor-left-wall.svg")
+		@else if ($i == 3)
+			background-image: url("../../assets/backgrounds/floor-right-wall.svg")
+		@else
+			background-image: url("../../assets/backgrounds/floor.svg")
 		position: absolute
-
-		transform-origin: left top
 		left: -305px
+		
 		width: var(--width)
 		height: var(--height)
 
+		transform-origin: left top
 		transition: all 1s ease
 
 		.scene-1-nav-#{$i}
@@ -124,7 +130,7 @@ body
 
 	background-color: rgba(0, 0, 0, .95)
 
-.scene-1-nav-1, .scene-1-nav-2 label:last-child
+.scene-1-nav-1
 	display: none
 
 // game-closure
@@ -205,33 +211,33 @@ body
 // bed
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
-
-// chair
-.chair
-	@include objects(70px, 70px, var(--object-x), var(--object-y))
-.chair-left-side
-	transform: rotateY(180deg)
+// curtain
+.curtain
+	@include objects(80px, 80px, var(--object-x), var(--object-y))
 
 // door
+.door-front
+	@include objects(80px, 80px, var(--object-x), var(--object-y))
+
 .door-left-side
-	@include objects(40px, 40px, var(--object-x), var(--object-y))
+	@include objects(60px, 60px, var(--object-x), var(--object-y))
 
 	transform-origin: left
 	transform: skewY(-68deg) rotateY(-84deg)
 .door-right-side
-	@include objects(40px, 40px, var(--object-x), var(--object-y))
+	@include objects(60px, 60px, var(--object-x), var(--object-y))
 
 	transform-origin: left
 	transform: skewY(68deg) rotateY(65deg)
 .door-left-side-room
-	@include objects(20px, 39.5px, var(--object-x), var(--object-y))
+	@include objects(35px, 57px, var(--object-x), var(--object-y))
 
 	transform-origin: left
 	transform: skewY(-68deg) rotateY(-65deg)
 
 	background-color: #222
 .door-right-side-room
-	@include objects(20px, 39.5px, var(--object-x), var(--object-y))
+	@include objects(35px, 57px, var(--object-x), var(--object-y))
 
 	transform-origin: left
 	transform: skewY(68deg) rotateY(65deg)
@@ -245,7 +251,22 @@ body
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
 .gas-stove
-	@include objects(40px, 40px, var(--object-x), var(--object-y))	
+	@include objects(40px, 40px, var(--object-x), var(--object-y))
+.stove-fire
+	@include objects(30px, 30px, var(--object-x), var(--object-y))
+	transform: scale(0)
+
+.hat-stand
+	@include objects(30px, 100px, var(--object-x), var(--object-y))
+
+.mess
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
+
+.mouse
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
+
+	display: none
+	animation: walk-around 3s ease infinite
 
 .oven
 	@include objects(50px, 50px, var(--object-x), var(--object-y))	
@@ -253,6 +274,10 @@ body
 // switch
 .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
+
+// table
+.table
+	@include objects(80px, 80px, var(--object-x), var(--object-y))
 
 // cupboard
 .cupboard
@@ -265,6 +290,10 @@ body
 // key
 .key-vertical
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
+.study-room-key
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
+
+	display: none
 
 // paperball
 .paperball
@@ -273,20 +302,34 @@ body
 	transition: all .5s ease
 
 // spray
+.living-room-shelf
+	@include objects(70px, 70px, var(--object-x), var(--object-y))
+
+// spray
 .spray
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
-// table
-.table
-	@include objects(80, 80px, var(--object-x), var(--object-y))
+// sofa
+.sofa
+	@include objects(70px, 70px, var(--object-x), var(--object-y))
 
 // trash-bin
 .trash-bin
+	@include objects(50px, 50px, var(--object-x), var(--object-y))
+.trash-bin-opener
+	@include objects(37px, 16px, var(--object-x), var(--object-y))
+
+// TV
+.tv
 	@include objects(50px, 50px, var(--object-x), var(--object-y))
 
 // vase
 .vase
 	@include objects(30px, 30px, var(--object-x), var(--object-y))
+
+// window
+.window
+	@include objects(70px, 70px, var(--object-x), var(--object-y))
 
 // ROOM DARK INTERACTION
 .room-dark .switch
@@ -315,14 +358,19 @@ body
 	.room-dark
 		display: none
 	.message-trigger-bedroom-turn-on
-		height: 82px
+		height: 94px
 
 // kitchen switch
 .kitchen-switch-checkbox:checked ~ .scene-1-room-2
 	.room-dark
 		display: none
 	.message-trigger-kitchen-turn-on
-		height: 82px
+		height: 94px
+
+// interaction with locked door
+.bedroom-door-locked-radio:checked ~ .scene-1-room-1
+	.message-trigger-bedroom-locked
+		height: 94px
 
 // toggle cupboard
 .bedroom-cupboard-1-checkbox:checked ~ .scene-1-room-1
@@ -335,7 +383,7 @@ body
 		.paperball-under-bed
 			transform: scale(0)
 		.message-trigger-paperball-taken
-			height: 82px
+			height: 94px
 	~ .items-board
 		.item-paperball-1-block
 			display: block
@@ -365,7 +413,7 @@ body
 		.door-right-side-locked
 			display: none
 		.message-trigger-bedroom-key-taken
-			height: 82px
+			height: 94px
 	~ .items-board
 		.item-bedroom-key-block
 			display: block
@@ -386,7 +434,7 @@ body
 		.door-right-side
 			transform: skewY(68deg) rotateY(80deg)
 		.message-trigger-bedroom-unlocked
-			height: 82px
+			height: 94px
 		.scene-1-nav-1
 			display: inline
 	~ .items-board
@@ -394,6 +442,128 @@ body
 			display: none !important
 	~ .bedroom-key-description
 		height: 0 !important
+
+// turn on the kitchen stove
+.kitchen-stove-switch-checkbox:checked ~ .scene-1-room-2
+	.stove-fire
+		transform-origin: bottom
+		transform: scale(1)
+
+// take the paper ball 1 trash
+.kitchen-item-paper-ball-1-trash-radio:checked
+	~ .kitchen-item-paper-ball-2-trash-radio:checked
+		~ .kitchen-item-can-trash-radio:checked
+			~ .kitchen-item-fish-bone-trash-radio:checked
+				~ .scene-1-room-2
+					.message-trigger-kitchen-all-trash-collected	
+						height: 94px
+		height: 94px
+	~ .scene-1-room-2
+		.paper-ball-1-trash
+			transform: scale(0)
+	~ .items-board
+		.item-paperball-1-trash-block
+			display: block
+
+// take the paper ball 2 trash
+.kitchen-item-paper-ball-2-trash-radio:checked ~ .scene-1-room-2
+	.paper-ball-2-trash
+		transform: scale(0)
+	~ .items-board
+		.item-paperball-2-trash-block
+			display: block
+
+// take the can trash
+.kitchen-item-can-trash-radio:checked ~ .scene-1-room-2
+	.can-trash
+		transform: scale(0)
+	~ .items-board
+		.item-can-trash-block
+			display: block
+
+// take the fish bone trash
+.kitchen-item-fish-bone-trash-radio:checked ~ .scene-1-room-2
+	.fish-bone-trash
+		transform: scale(0)
+	~ .items-board
+		.item-fish-bone-trash-block
+			display: block
+
+// put all the trash into the bin
+.kitchen-put-paper-ball-1-trash-radio:checked
+	~ .kitchen-put-paper-ball-2-trash-radio:checked
+		~ .kitchen-put-can-trash-radio:checked
+			~ .kitchen-put-fish-bone-trash-radio:checked
+				~ .scene-1-room-2
+					.message-trigger-kitchen-all-trash-put	
+						height: 94px
+					.mouse
+						display: block
+
+.kitchen-put-paper-ball-1-trash-radio:checked
+	~ .scene-1-room-2
+		.trash-bin-for-paper-ball-1-trash
+			display: none
+	~ .items-board
+		.item-paperball-1-trash-block
+			display: none !important
+	~ .item-apperball-1-trash-description
+		height: 0 !important
+
+.kitchen-put-paper-ball-2-trash-radio:checked
+	~ .scene-1-room-2
+		.trash-bin-for-paper-ball-2-trash
+			display: none
+	~ .items-board
+		.item-paperball-2-trash-block
+			display: none !important
+	~ .item-paperball-2-trash-description
+		height: 0 !important
+
+.kitchen-put-can-trash-radio:checked
+	~ .scene-1-room-2
+		.trash-bin-for-can-trash
+			display: none
+	~ .items-board
+		.item-can-trash-block
+			display: none !important
+	~ .item-can-trash-description
+		height: 0 !important
+
+.kitchen-put-fish-bone-trash-radio:checked
+	~ .scene-1-room-2
+		.trash-bin-for-fish-bone-trash
+			display: none
+	~ .items-board
+		.item-fish-bone-trash-block
+			display: none !important
+	~ .item-fish-bone-trash-description
+		height: 0 !important
+
+// kill mouse using mouse spray
+.kitchen-kill-mouse-radio:checked
+	~ .scene-1-room-2
+		.mouse
+			transform: rotateX(180deg)
+			animation: none
+		.study-room-key
+			display: block
+		.message-trigger-kitchen-mouse-died
+			height: 94px
+	~ .items-board
+		.item-mouse-spray-block
+			display: none !important
+	~ .item-mouse-spray-description
+		height: 0 !important
+
+.kitchen-take-study-room-key-radio:checked
+	~ .scene-1-room-2
+		.study-room-key
+			transform: scale(0)
+		.message-trigger-kitchen-got-key
+			height: 94px
+	~ .items-board .item-study-room-key-block
+		display: block
 
 // show description for each item obtained
 .bedroom-paperball-1-description-radio:checked
@@ -431,6 +601,69 @@ body
 	~ .items-board .item-mouse-spray-block
 		background-color: #eee
 
+.item-paperball-1-trash-description-radio:checked
+	~ .item-paperball-1-trash-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-paperball-1-trash-block
+		background-color: #eee
+
+.item-paperball-2-trash-description-radio:checked
+	~ .item-paperball-2-trash-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-paperball-2-trash-block
+		background-color: #eee
+
+.item-can-trash-description-radio:checked
+	~ .item-can-trash-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-can-trash-block
+		background-color: #eee
+
+.item-fish-bone-trash-description-radio:checked
+	~ .item-fish-bone-trash-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-fish-bone-trash-block
+		background-color: #eee
+
+.item-study-room-key-description-radio:checked
+	~ .item-study-room-key-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-study-room-key-block
+		background-color: #eee
+
+.item-battery-description-radio:checked
+	~ .item-battery-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-battery-block
+		background-color: #eee
+
+.item-symbol-part-1-description-radio:checked
+	~ .item-symbol-part-1-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-symbol-part-1-block
+		background-color: #eee
+
+.item-symbol-part-2-description-radio:checked
+	~ .item-symbol-part-2-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-symbol-part-2-block
+		background-color: #eee
+
+.item-remote-description-radio:checked
+	~ .item-remote-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-remote-block
+		background-color: #eee
+
 // -----------------------------
 // ITEMS
 
@@ -462,6 +695,10 @@ body
 
 			transition: all .5s ease
 
+			img
+				width: 100%
+				height: 100%
+
 // -----------------------------
 // ITEMS DESCRIPTION
 
@@ -485,8 +722,9 @@ body
 
 
 .message-trigger-bedroom-turn-off,
-.message-trigger-kitchen-turn-off
-	height: 82px
+.message-trigger-kitchen-turn-off,
+.message-trigger-living-room-first-time
+	height: 94px
 
 // -----------------------------
 // ANIMATIONS
@@ -499,3 +737,16 @@ body
 	50%
 		background-color: #222
 		color: #eee
+
+@keyframes walk-around
+	from, to
+		left: 260px
+
+	30%
+		transform: rotateY(0deg)
+
+	50%
+		left: 220px
+	
+	80%
+		transform: rotateY(180deg)

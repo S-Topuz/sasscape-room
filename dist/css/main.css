@@ -52,10 +52,10 @@ body {
   background-color: var(--background1);
   background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
-  transform-origin: left top;
   left: -305px;
   width: var(--width);
   height: var(--height);
+  transform-origin: left top;
   transition: all 1s ease; }
   .scene-1-room-1 .scene-1-nav-1 {
     background-color: #222;
@@ -68,12 +68,12 @@ body {
 
 .scene-1-room-2 {
   background-color: var(--background2);
-  background-image: url("../../assets/backgrounds/floor.svg");
+  background-image: url("../../assets/backgrounds/floor-left-wall.svg");
   position: absolute;
-  transform-origin: left top;
   left: -305px;
   width: var(--width);
   height: var(--height);
+  transform-origin: left top;
   transition: all 1s ease; }
   .scene-1-room-2 .scene-1-nav-2 {
     background-color: #222;
@@ -86,12 +86,12 @@ body {
 
 .scene-1-room-3 {
   background-color: var(--background3);
-  background-image: url("../../assets/backgrounds/floor.svg");
+  background-image: url("../../assets/backgrounds/floor-right-wall.svg");
   position: absolute;
-  transform-origin: left top;
   left: -305px;
   width: var(--width);
   height: var(--height);
+  transform-origin: left top;
   transition: all 1s ease; }
   .scene-1-room-3 .scene-1-nav-3 {
     background-color: #222;
@@ -106,10 +106,10 @@ body {
   background-color: var(--background4);
   background-image: url("../../assets/backgrounds/floor.svg");
   position: absolute;
-  transform-origin: left top;
   left: -305px;
   width: var(--width);
   height: var(--height);
+  transform-origin: left top;
   transition: all 1s ease; }
   .scene-1-room-4 .scene-1-nav-4 {
     background-color: #222;
@@ -129,7 +129,7 @@ body {
   width: var(--width);
   background-color: rgba(0, 0, 0, 0.95); }
 
-.scene-1-nav-1, .scene-1-nav-2 label:last-child {
+.scene-1-nav-1 {
   display: none; }
 
 .scene-closure-bottom {
@@ -182,30 +182,41 @@ body {
     width: 100%;
     height: 100%; }
 
-.chair {
+.curtain {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   transform-origin: bottom;
   transform: scale(1);
   transition: all 0.5s ease; }
-  .chair img {
+  .curtain img {
     width: 100%;
     height: 100%; }
 
-.chair-left-side {
-  transform: rotateY(180deg); }
+.door-front {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 80px;
+  height: 80px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .door-front img {
+    width: 100%;
+    height: 100%; }
 
 .door-left-side {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   transform-origin: bottom;
   transform: scale(1);
   transition: all 0.5s ease;
@@ -220,8 +231,8 @@ body {
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   transform-origin: bottom;
   transform: scale(1);
   transition: all 0.5s ease;
@@ -236,8 +247,8 @@ body {
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
-  width: 20px;
-  height: 39.5px;
+  width: 35px;
+  height: 57px;
   transform-origin: bottom;
   transform: scale(1);
   transition: all 0.5s ease;
@@ -253,8 +264,8 @@ body {
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
-  width: 20px;
-  height: 39.5px;
+  width: 35px;
+  height: 57px;
   transform-origin: bottom;
   transform: scale(1);
   transition: all 0.5s ease;
@@ -307,6 +318,65 @@ body {
     width: 100%;
     height: 100%; }
 
+.stove-fire {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 30px;
+  height: 30px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  transform: scale(0); }
+  .stove-fire img {
+    width: 100%;
+    height: 100%; }
+
+.hat-stand {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 30px;
+  height: 100px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .hat-stand img {
+    width: 100%;
+    height: 100%; }
+
+.mess {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 20px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .mess img {
+    width: 100%;
+    height: 100%; }
+
+.mouse {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 20px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  display: none;
+  animation: walk-around 3s ease infinite; }
+  .mouse img {
+    width: 100%;
+    height: 100%; }
+
 .oven {
   position: absolute;
   user-drag: none;
@@ -332,6 +402,20 @@ body {
   transform: scale(1);
   transition: all 0.5s ease; }
   .switch img {
+    width: 100%;
+    height: 100%; }
+
+.table {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 80px;
+  height: 80px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .table img {
     width: 100%;
     height: 100%; }
 
@@ -377,6 +461,21 @@ body {
     width: 100%;
     height: 100%; }
 
+.study-room-key {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 20px;
+  height: 20px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  display: none; }
+  .study-room-key img {
+    width: 100%;
+    height: 100%; }
+
 .paperball {
   position: absolute;
   user-drag: none;
@@ -390,6 +489,20 @@ body {
   transform-origin: center;
   transition: all 0.5s ease; }
   .paperball img {
+    width: 100%;
+    height: 100%; }
+
+.living-room-shelf {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 70px;
+  height: 70px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .living-room-shelf img {
     width: 100%;
     height: 100%; }
 
@@ -407,17 +520,17 @@ body {
     width: 100%;
     height: 100%; }
 
-.table {
+.sofa {
   position: absolute;
   user-drag: none;
   left: var(--object-x);
   top: var(--object-y);
-  width: 80;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   transform-origin: bottom;
   transform: scale(1);
   transition: all 0.5s ease; }
-  .table img {
+  .sofa img {
     width: 100%;
     height: 100%; }
 
@@ -435,6 +548,34 @@ body {
     width: 100%;
     height: 100%; }
 
+.trash-bin-opener {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 37px;
+  height: 16px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .trash-bin-opener img {
+    width: 100%;
+    height: 100%; }
+
+.tv {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 50px;
+  height: 50px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .tv img {
+    width: 100%;
+    height: 100%; }
+
 .vase {
   position: absolute;
   user-drag: none;
@@ -446,6 +587,20 @@ body {
   transform: scale(1);
   transition: all 0.5s ease; }
   .vase img {
+    width: 100%;
+    height: 100%; }
+
+.window {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 70px;
+  height: 70px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .window img {
     width: 100%;
     height: 100%; }
 
@@ -478,12 +633,15 @@ body {
 .bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark {
   display: none; }
 .bedroom-switch-checkbox:checked ~ .scene-1-room-1 .message-trigger-bedroom-turn-on {
-  height: 82px; }
+  height: 94px; }
 
 .kitchen-switch-checkbox:checked ~ .scene-1-room-2 .room-dark {
   display: none; }
 .kitchen-switch-checkbox:checked ~ .scene-1-room-2 .message-trigger-kitchen-turn-on {
-  height: 82px; }
+  height: 94px; }
+
+.bedroom-door-locked-radio:checked ~ .scene-1-room-1 .message-trigger-bedroom-locked {
+  height: 94px; }
 
 .bedroom-cupboard-1-checkbox:checked ~ .scene-1-room-1 .cupboard-closed {
   display: none; }
@@ -491,7 +649,7 @@ body {
 .bedroom-paper-item-radio:checked ~ .scene-1-room-1 .paperball-under-bed {
   transform: scale(0); }
 .bedroom-paper-item-radio:checked ~ .scene-1-room-1 .message-trigger-paperball-taken {
-  height: 82px; }
+  height: 94px; }
 .bedroom-paper-item-radio:checked ~ .items-board .item-paperball-1-block {
   display: block; }
 
@@ -511,7 +669,7 @@ body {
 .bedroom-item-key-radio:checked ~ .scene-1-room-1 .door-right-side-locked {
   display: none; }
 .bedroom-item-key-radio:checked ~ .scene-1-room-1 .message-trigger-bedroom-key-taken {
-  height: 82px; }
+  height: 94px; }
 .bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block {
   display: block; }
 
@@ -523,13 +681,93 @@ body {
 .open-door-event-radio:checked ~ .scene-1-room-1 .door-right-side {
   transform: skewY(68deg) rotateY(80deg); }
 .open-door-event-radio:checked ~ .scene-1-room-1 .message-trigger-bedroom-unlocked {
-  height: 82px; }
+  height: 94px; }
 .open-door-event-radio:checked ~ .scene-1-room-1 .scene-1-nav-1 {
   display: inline; }
 .open-door-event-radio:checked ~ .items-board .item-bedroom-key-block {
   display: none !important; }
 .open-door-event-radio:checked ~ .bedroom-key-description {
   height: 0 !important; }
+
+.kitchen-stove-switch-checkbox:checked ~ .scene-1-room-2 .stove-fire {
+  transform-origin: bottom;
+  transform: scale(1); }
+
+.kitchen-item-paper-ball-1-trash-radio:checked ~ .kitchen-item-paper-ball-2-trash-radio:checked {
+  height: 94px; }
+  .kitchen-item-paper-ball-1-trash-radio:checked ~ .kitchen-item-paper-ball-2-trash-radio:checked ~ .kitchen-item-can-trash-radio:checked ~ .kitchen-item-fish-bone-trash-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-all-trash-collected {
+    height: 94px; }
+.kitchen-item-paper-ball-1-trash-radio:checked ~ .scene-1-room-2 .paper-ball-1-trash {
+  transform: scale(0); }
+.kitchen-item-paper-ball-1-trash-radio:checked ~ .items-board .item-paperball-1-trash-block {
+  display: block; }
+
+.kitchen-item-paper-ball-2-trash-radio:checked ~ .scene-1-room-2 .paper-ball-2-trash {
+  transform: scale(0); }
+.kitchen-item-paper-ball-2-trash-radio:checked ~ .scene-1-room-2 ~ .items-board .item-paperball-2-trash-block {
+  display: block; }
+
+.kitchen-item-can-trash-radio:checked ~ .scene-1-room-2 .can-trash {
+  transform: scale(0); }
+.kitchen-item-can-trash-radio:checked ~ .scene-1-room-2 ~ .items-board .item-can-trash-block {
+  display: block; }
+
+.kitchen-item-fish-bone-trash-radio:checked ~ .scene-1-room-2 .fish-bone-trash {
+  transform: scale(0); }
+.kitchen-item-fish-bone-trash-radio:checked ~ .scene-1-room-2 ~ .items-board .item-fish-bone-trash-block {
+  display: block; }
+
+.kitchen-put-paper-ball-1-trash-radio:checked ~ .kitchen-put-paper-ball-2-trash-radio:checked ~ .kitchen-put-can-trash-radio:checked ~ .kitchen-put-fish-bone-trash-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-all-trash-put {
+  height: 94px; }
+.kitchen-put-paper-ball-1-trash-radio:checked ~ .kitchen-put-paper-ball-2-trash-radio:checked ~ .kitchen-put-can-trash-radio:checked ~ .kitchen-put-fish-bone-trash-radio:checked ~ .scene-1-room-2 .mouse {
+  display: block; }
+
+.kitchen-put-paper-ball-1-trash-radio:checked ~ .scene-1-room-2 .trash-bin-for-paper-ball-1-trash {
+  display: none; }
+.kitchen-put-paper-ball-1-trash-radio:checked ~ .items-board .item-paperball-1-trash-block {
+  display: none !important; }
+.kitchen-put-paper-ball-1-trash-radio:checked ~ .item-apperball-1-trash-description {
+  height: 0 !important; }
+
+.kitchen-put-paper-ball-2-trash-radio:checked ~ .scene-1-room-2 .trash-bin-for-paper-ball-2-trash {
+  display: none; }
+.kitchen-put-paper-ball-2-trash-radio:checked ~ .items-board .item-paperball-2-trash-block {
+  display: none !important; }
+.kitchen-put-paper-ball-2-trash-radio:checked ~ .item-paperball-2-trash-description {
+  height: 0 !important; }
+
+.kitchen-put-can-trash-radio:checked ~ .scene-1-room-2 .trash-bin-for-can-trash {
+  display: none; }
+.kitchen-put-can-trash-radio:checked ~ .items-board .item-can-trash-block {
+  display: none !important; }
+.kitchen-put-can-trash-radio:checked ~ .item-can-trash-description {
+  height: 0 !important; }
+
+.kitchen-put-fish-bone-trash-radio:checked ~ .scene-1-room-2 .trash-bin-for-fish-bone-trash {
+  display: none; }
+.kitchen-put-fish-bone-trash-radio:checked ~ .items-board .item-fish-bone-trash-block {
+  display: none !important; }
+.kitchen-put-fish-bone-trash-radio:checked ~ .item-fish-bone-trash-description {
+  height: 0 !important; }
+
+.kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .mouse {
+  transform: rotateX(180deg);
+  animation: none; }
+.kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .study-room-key {
+  display: block; }
+.kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-mouse-died {
+  height: 94px; }
+.kitchen-kill-mouse-radio:checked ~ .items-board .item-mouse-spray-block {
+  display: none !important; }
+.kitchen-kill-mouse-radio:checked ~ .item-mouse-spray-description {
+  height: 0 !important; }
+
+.kitchen-take-study-room-key-radio:checked ~ .scene-1-room-2 .study-room-key {
+  transform: scale(0); }
+.kitchen-take-study-room-key-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-key {
+  height: 94px; }
+.kitchen-take-study-room-key-radio:checked ~ .items-board .item-study-room-key-block {
+  display: block; }
 
 .bedroom-paperball-1-description-radio:checked ~ .paperball-1-description {
   height: 100px;
@@ -561,6 +799,60 @@ body {
 .item-mouse-spray-description-radio:checked ~ .items-board .item-mouse-spray-block {
   background-color: #eee; }
 
+.item-paperball-1-trash-description-radio:checked ~ .item-paperball-1-trash-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-paperball-1-trash-description-radio:checked ~ .items-board .item-paperball-1-trash-block {
+  background-color: #eee; }
+
+.item-paperball-2-trash-description-radio:checked ~ .item-paperball-2-trash-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-paperball-2-trash-description-radio:checked ~ .items-board .item-paperball-2-trash-block {
+  background-color: #eee; }
+
+.item-can-trash-description-radio:checked ~ .item-can-trash-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-can-trash-description-radio:checked ~ .items-board .item-can-trash-block {
+  background-color: #eee; }
+
+.item-fish-bone-trash-description-radio:checked ~ .item-fish-bone-trash-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-fish-bone-trash-description-radio:checked ~ .items-board .item-fish-bone-trash-block {
+  background-color: #eee; }
+
+.item-study-room-key-description-radio:checked ~ .item-study-room-key-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-study-room-key-description-radio:checked ~ .items-board .item-study-room-key-block {
+  background-color: #eee; }
+
+.item-battery-description-radio:checked ~ .item-battery-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-battery-description-radio:checked ~ .items-board .item-battery-block {
+  background-color: #eee; }
+
+.item-symbol-part-1-description-radio:checked ~ .item-symbol-part-1-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-symbol-part-1-description-radio:checked ~ .items-board .item-symbol-part-1-block {
+  background-color: #eee; }
+
+.item-symbol-part-2-description-radio:checked ~ .item-symbol-part-2-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-symbol-part-2-description-radio:checked ~ .items-board .item-symbol-part-2-block {
+  background-color: #eee; }
+
+.item-remote-description-radio:checked ~ .item-remote-description {
+  height: 100px;
+  overflow-y: auto; }
+.item-remote-description-radio:checked ~ .items-board .item-remote-block {
+  background-color: #eee; }
+
 .items-board {
   display: flex;
   flex-direction: column;
@@ -581,6 +873,9 @@ body {
       padding: 2px;
       margin: 2px;
       transition: all 0.5s ease; }
+      .items-board .items-list .item-block img {
+        width: 100%;
+        height: 100%; }
 
 .items-description-board {
   position: absolute;
@@ -611,8 +906,9 @@ body {
   left: 0; }
 
 .message-trigger-bedroom-turn-off,
-.message-trigger-kitchen-turn-off {
-  height: 82px; }
+.message-trigger-kitchen-turn-off,
+.message-trigger-living-room-first-time {
+  height: 94px; }
 
 @keyframes blink {
   from, to {
@@ -621,5 +917,14 @@ body {
   50% {
     background-color: #222;
     color: #eee; } }
+@keyframes walk-around {
+  from, to {
+    left: 260px; }
+  30% {
+    transform: rotateY(0deg); }
+  50% {
+    left: 220px; }
+  80% {
+    transform: rotateY(180deg); } }
 
 /*# sourceMappingURL=main.css.map */
