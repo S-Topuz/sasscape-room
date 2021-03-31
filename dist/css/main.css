@@ -129,18 +129,8 @@ body {
   width: var(--width);
   background-color: rgba(0, 0, 0, 0.95); }
 
-.interaction-checkbox {
+.scene-1-nav-1, .scene-1-nav-2 label:last-child {
   display: none; }
-
-.bedroom-switch-checkbox ~ .scene-1-room .scene-1-nav-1, .bedroom-switch-checkbox ~ .scene-1-room .scene-1-nav-2 label:last-child {
-  display: none; }
-
-.scene-radio, .scene-1-room-radio {
-  display: none;
-  position: relative; }
-
-.scene-radio:checked + .scene {
-  top: 0; }
 
 .scene-closure-bottom {
   background-color: #222;
@@ -178,10 +168,6 @@ body {
 .last {
   animation: blink 0.5s ease infinite; }
 
-.trigger-radio {
-  display: none;
-  position: absolute; }
-
 .bed {
   position: absolute;
   user-drag: none;
@@ -195,6 +181,23 @@ body {
   .bed img {
     width: 100%;
     height: 100%; }
+
+.chair {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 70px;
+  height: 70px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .chair img {
+    width: 100%;
+    height: 100%; }
+
+.chair-left-side {
+  transform: rotateY(180deg); }
 
 .door-left-side {
   position: absolute;
@@ -262,6 +265,20 @@ body {
     width: 100%;
     height: 100%; }
 
+.fridge {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 120px;
+  height: 120px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .fridge img {
+    width: 100%;
+    height: 100%; }
+
 .flower {
   position: absolute;
   user-drag: none;
@@ -273,6 +290,34 @@ body {
   transform: scale(1);
   transition: all 0.5s ease; }
   .flower img {
+    width: 100%;
+    height: 100%; }
+
+.gas-stove {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 40px;
+  height: 40px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .gas-stove img {
+    width: 100%;
+    height: 100%; }
+
+.oven {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 50px;
+  height: 50px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .oven img {
     width: 100%;
     height: 100%; }
 
@@ -301,6 +346,20 @@ body {
   transform: scale(1);
   transition: all 0.5s ease; }
   .cupboard img {
+    width: 100%;
+    height: 100%; }
+
+.cabinet {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 60px;
+  height: 60px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .cabinet img {
     width: 100%;
     height: 100%; }
 
@@ -348,6 +407,34 @@ body {
     width: 100%;
     height: 100%; }
 
+.table {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 80;
+  height: 80px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .table img {
+    width: 100%;
+    height: 100%; }
+
+.trash-bin {
+  position: absolute;
+  user-drag: none;
+  left: var(--object-x);
+  top: var(--object-y);
+  width: 50px;
+  height: 50px;
+  transform-origin: bottom;
+  transform: scale(1);
+  transition: all 0.5s ease; }
+  .trash-bin img {
+    width: 100%;
+    height: 100%; }
+
 .vase {
   position: absolute;
   user-drag: none;
@@ -376,6 +463,17 @@ body {
   .room-dark .switch img {
     width: 100%;
     height: 100%; }
+
+.scene-radio,
+.scene-1-room-radio,
+.trigger-radio,
+.interaction-checkbox,
+.item-description-radio {
+  display: none;
+  position: relative; }
+
+.scene-radio:checked + .scene {
+  top: 0; }
 
 .bedroom-switch-checkbox:checked ~ .scene-1-room-1 .room-dark {
   display: none; }
@@ -483,9 +581,6 @@ body {
       padding: 2px;
       margin: 2px;
       transition: all 0.5s ease; }
-
-.item-description-radio {
-  display: none; }
 
 .items-description-board {
   position: absolute;

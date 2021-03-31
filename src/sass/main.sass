@@ -125,7 +125,7 @@ body
 	background-color: rgba(0, 0, 0, .95)
 
 .scene-1-nav-1, .scene-1-nav-2 label:last-child
-		display: none
+	display: none
 
 // game-closure
 @mixin scene-closure($orientation)
@@ -206,6 +206,12 @@ body
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
 
+// chair
+.chair
+	@include objects(70px, 70px, var(--object-x), var(--object-y))
+.chair-left-side
+	transform: rotateY(180deg)
+
 // door
 .door-left-side
 	@include objects(40px, 40px, var(--object-x), var(--object-y))
@@ -232,9 +238,17 @@ body
 
 	background-color: #222
 
+.fridge
+	@include objects(120px, 120px, var(--object-x), var(--object-y))
 
 .flower
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
+
+.gas-stove
+	@include objects(40px, 40px, var(--object-x), var(--object-y))	
+
+.oven
+	@include objects(50px, 50px, var(--object-x), var(--object-y))	
 
 // switch
 .switch
@@ -242,6 +256,10 @@ body
 
 // cupboard
 .cupboard
+	@include objects(60px, 60px, var(--object-x), var(--object-y))
+
+// cabinet
+.cabinet
 	@include objects(60px, 60px, var(--object-x), var(--object-y))
 
 // key
@@ -258,6 +276,14 @@ body
 .spray
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
+// table
+.table
+	@include objects(80, 80px, var(--object-x), var(--object-y))
+
+// trash-bin
+.trash-bin
+	@include objects(50px, 50px, var(--object-x), var(--object-y))
+
 // vase
 .vase
 	@include objects(30px, 30px, var(--object-x), var(--object-y))
@@ -273,7 +299,7 @@ body
 // switcher inputs
 .scene-radio,
 .scene-1-room-radio,
-.trigger-radio
+.trigger-radio,
 .interaction-checkbox, 
 .item-description-radio
 	display: none
