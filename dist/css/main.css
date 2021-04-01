@@ -184,7 +184,7 @@ body {
   height: 1500px;
   z-index: 5;
   top: -200px;
-  left: 312px; }
+  left: 302px; }
 
 .intro-label,
 .instruction-label,
@@ -896,19 +896,10 @@ body {
 .bedroom-item-key-radio:checked ~ .items-board .item-bedroom-key-block {
   display: block; }
 
-.bedroom-mouse-spray-item-radio:checked ~ .kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .mouse {
-  transform: rotateX(180deg);
-  animation: none; }
-.bedroom-mouse-spray-item-radio:checked ~ .kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .study-room-key {
-  display: block; }
-.bedroom-mouse-spray-item-radio:checked ~ .kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-mouse-died {
-  height: 94px; }
-.bedroom-mouse-spray-item-radio:checked ~ .kitchen-kill-mouse-radio:checked ~ .items-board .item-mouse-spray-block {
-  display: none !important; }
-.bedroom-mouse-spray-item-radio:checked ~ .kitchen-kill-mouse-radio:checked ~ .item-mouse-spray-description {
-  height: 0 !important; }
 .bedroom-mouse-spray-item-radio:checked ~ .scene-1-room-1 .mouse-spray {
   transform: scale(0); }
+.bedroom-mouse-spray-item-radio:checked ~ .scene-1-room-2 .mouse-locked {
+  display: none !important; }
 .bedroom-mouse-spray-item-radio:checked ~ .items-board .item-mouse-spray-block {
   display: block; }
 
@@ -997,6 +988,18 @@ body {
 .kitchen-put-fish-bone-trash-radio:checked ~ .item-fish-bone-trash-description {
   height: 0 !important; }
 
+.kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .mouse {
+  transform: rotateX(180deg);
+  animation: none; }
+.kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .study-room-key {
+  display: block; }
+.kitchen-kill-mouse-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-mouse-died {
+  height: 94px; }
+.kitchen-kill-mouse-radio:checked ~ .items-board .item-mouse-spray-block {
+  display: none !important; }
+.kitchen-kill-mouse-radio:checked ~ .item-mouse-spray-description {
+  height: 0 !important; }
+
 .kitchen-item-study-room-key-radio:checked ~ .scene-1-room-2 .study-room-key {
   transform: scale(0); }
 .kitchen-item-study-room-key-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-key {
@@ -1019,6 +1022,8 @@ body {
   transform: scale(0); }
 .kitchen-item-symbol-part-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-battery {
   height: 94px; }
+.kitchen-item-symbol-part-radio:checked ~ .scene-1-room-4 .emblem-put-left-locked {
+  display: none; }
 .kitchen-item-symbol-part-radio:checked ~ .items-board .item-symbol-part-1-block {
   display: block; }
 
@@ -1137,7 +1142,7 @@ body {
 .study-room-put-symbol-part-1-radio:checked ~ .study-room-put-symbol-part-2-radio:checked ~ .scene-1-room-4 .message-trigger-study-room-bookshelf-opened {
   height: 94px; }
 
-.study-room-item-front-door-key-radio:checked ~ .scene-1-room-3 .front-door-locked {
+.study-room-item-front-door-key-radio:checked ~ .scene-1-room-3 .door-front-locked {
   display: none; }
 .study-room-item-front-door-key-radio:checked ~ .scene-1-room-4 .front-door-key {
   transform: scale(0); }
@@ -1175,6 +1180,8 @@ body {
   transform: scale(0); }
 .secret-room-item-symbol-part-2-radio:checked ~ .scene-1-room-5 .message-trigger-secret-room-got-symbol-part {
   height: 94px; }
+.secret-room-item-symbol-part-2-radio:checked ~ .scene-1-room-4 .emblem-put-right-locked {
+  display: none; }
 .secret-room-item-symbol-part-2-radio:checked ~ .items-board .item-symbol-part-2-block {
   display: block; }
 

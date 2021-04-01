@@ -155,7 +155,7 @@ body
 		@if ($orientation == "left")
 			left: -312px
 		@else
-			left: 312px
+			left: 302px
 
 	@else
 		width: 2000px
@@ -504,25 +504,12 @@ body
 
 // take the mouse spray
 .bedroom-mouse-spray-item-radio:checked
-	// kill mouse using mouse spray
-	~ .kitchen-kill-mouse-radio:checked
-		~ .scene-1-room-2
-			.mouse
-				transform: rotateX(180deg)
-				animation: none
-			.study-room-key
-				display: block
-			.message-trigger-kitchen-mouse-died
-				height: 94px
-		~ .items-board
-			.item-mouse-spray-block
-				display: none !important
-		~ .item-mouse-spray-description
-			height: 0 !important
-
 	~ .scene-1-room-1
 		.mouse-spray
 			transform: scale(0)
+	~ .scene-1-room-2
+		.mouse-locked
+			display: none !important
 	~ .items-board
 		.item-mouse-spray-block
 			display: block
@@ -658,6 +645,22 @@ body
 	~ .item-fish-bone-trash-description
 		height: 0 !important
 
+// kill mouse using mouse spray
+.kitchen-kill-mouse-radio:checked
+	~ .scene-1-room-2
+		.mouse
+			transform: rotateX(180deg)
+			animation: none
+		.study-room-key
+			display: block
+		.message-trigger-kitchen-mouse-died
+			height: 94px
+	~ .items-board
+		.item-mouse-spray-block
+			display: none !important
+	~ .item-mouse-spray-description
+		height: 0 !important
+
 // take the study room key
 .kitchen-item-study-room-key-radio:checked
 	~ .scene-1-room-2
@@ -694,6 +697,9 @@ body
 			transform: scale(0)
 		.message-trigger-kitchen-got-battery
 			height: 94px
+	~ .scene-1-room-4
+		.emblem-put-left-locked
+			display: none
 	~ .items-board .item-symbol-part-1-block
 		display: block
 
@@ -881,7 +887,7 @@ body
 // take the front door key
 .study-room-item-front-door-key-radio:checked
 	~ .scene-1-room-3
-		.front-door-locked
+		.door-front-locked
 			display: none
 	~ .scene-1-room-4
 		.front-door-key
@@ -936,6 +942,9 @@ body
 			transform: scale(0)
 		.message-trigger-secret-room-got-symbol-part
 			height: 94px
+	~ .scene-1-room-4
+		.emblem-put-right-locked
+			display: none
 	~ .items-board .item-symbol-part-2-block
 		display: block
 
