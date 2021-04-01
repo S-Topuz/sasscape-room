@@ -2,6 +2,12 @@
 
 **escape-room** is a web-based escape room game.
 
+## game features
+- Consists of multiple rooms
+- Interactions with many things
+- Narration message board
+- Items and description board
+
 ## language features
 - HTML
 - Sass
