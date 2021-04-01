@@ -2,8 +2,6 @@
 
 **escape-room** is a web-based escape room game.
 
-this game is in development and not released yet, but you can see the progress on the demo.
-
 ## language features
 - HTML
 - Sass
