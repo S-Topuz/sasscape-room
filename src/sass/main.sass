@@ -3,6 +3,7 @@
 	--background2: #db5a42
 	--background3: #ffd275
 	--background4: #469eff
+	--background5: #444
 
 	--width: 300px
 	--height: 300px
@@ -87,7 +88,7 @@ body
 	display: inline
 
 // scene room
-@for $i from 1 through 4
+@for $i from 1 through 5
 	.scene-1-room-#{$i}
 		background-color: var(--background#{$i})
 		
@@ -98,12 +99,13 @@ body
 		@else
 			background-image: url("../../assets/backgrounds/floor.svg")
 		position: absolute
-		left: -305px
+		left: -15px
 		
 		width: var(--width)
 		height: var(--height)
 
 		transform-origin: left top
+		transform: rotateY(90deg)
 		transition: all 1s ease
 
 		.scene-1-nav-#{$i}
@@ -120,6 +122,7 @@ body
 // room switcher for scene 1
 .scene-1-room-radio:checked
 	+ .scene-1-room
+		transform: rotateY(0deg)
 		left: 0px
 
 // dark background
@@ -130,7 +133,9 @@ body
 
 	background-color: rgba(0, 0, 0, .95)
 
-.scene-1-nav-1
+.scene-1-nav-1,
+.scene-1-nav-2 label:last-child,
+.scene-1-nav-3 label:last-child
 	display: none
 
 // game-closure
@@ -177,10 +182,12 @@ body
 // game label
 .intro-label,
 .instruction-label,
-.prolog-label
+.prolog-label,
+.ending-label
 	display: block
 	margin: 16px
 
+// trigger blink animation
 .last
 	animation: blink .5s ease infinite
 
@@ -189,7 +196,6 @@ body
 
 @mixin objects($width, $height, $x, $y)
 	position: absolute
-	user-drag: none
 	left: $x
 	top: $y
 
@@ -208,16 +214,54 @@ body
 @mixin object-dark()
 	background-color: rgba(0, 0, 0, .95)
 
+// battery
+.battery
+	@include objects(30px, 30px, var(--object-x), var(--object-y))
+
 // bed
 .bed
 	@include objects(100px, 100px, var(--object-x), var(--object-y))
+
+// book
+.book
+	@include objects(30px, 30px, var(--object-x), var(--object-y))
+.emblem-put
+	@include objects(10px, 17px, var(--object-x), var(--object-y))
+.emblem-put-left-installed,
+.emblem-put-right-installed
+	display: none
+
+// bookshelf
+.bookshelf
+	@include objects(100px, 100px, var(--object-x), var(--object-y))
+.bookshelf-secret
+	@include objects(80px, 80px, var(--object-x), var(--object-y))
+	background-color: #222
+
+// cabinet
+.cabinet
+	@include objects(60px, 60px, var(--object-x), var(--object-y))
+	
+// chest
+.chest, .chest-open
+	@include objects(80px, 80px, var(--object-x), var(--object-y))
+.chest-open
+	display: none
+
+// cupboard
+.cupboard
+	@include objects(60px, 60px, var(--object-x), var(--object-y))
+
 // curtain
 .curtain
 	@include objects(80px, 80px, var(--object-x), var(--object-y))
 
 // door
 .door-front
-	@include objects(80px, 80px, var(--object-x), var(--object-y))
+	@include objects(40px, 80px, var(--object-x), var(--object-y))
+.door-front-escape
+	@include objects(40px, 64px, var(--object-x), var(--object-y))
+	background-color: #222
 
 .door-left-side
 	@include objects(60px, 60px, var(--object-x), var(--object-y))
@@ -244,66 +288,93 @@ body
 
 	background-color: #222
 
+// fridge
 .fridge
 	@include objects(120px, 120px, var(--object-x), var(--object-y))
 
+// flowers
 .flower
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
+// gas stove
 .gas-stove
 	@include objects(40px, 40px, var(--object-x), var(--object-y))
 .stove-fire
 	@include objects(30px, 30px, var(--object-x), var(--object-y))
 	transform: scale(0)
 
+// hat-stand
+.hat
+	@include objects(40px, 40px, var(--object-x), var(--object-y))
+.hat-on-stand
+	@include objects(30px, 30px, var(--object-x), var(--object-y))
+	transform: scale(0)
+
+// hat-stand
 .hat-stand
 	@include objects(30px, 100px, var(--object-x), var(--object-y))
+.hat-stand-action
+	display: none
 
+// key
+.key-vertical,
+.study-room-key,
+.cupboard-key,
+.chest-key,
+.front-door-key
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
+.study-room-key, .chest-key
+	display: none
+
+// living room shelf
+.living-room-shelf
+	@include objects(70px, 70px, var(--object-x), var(--object-y))
+
+// mess such as trash
 .mess
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
+// mouse
 .mouse
 	@include objects(20px, 20px, var(--object-x), var(--object-y))
 
 	display: none
+	transition: all 1s ease
 	animation: walk-around 3s ease infinite
 
+// oven
 .oven
 	@include objects(50px, 50px, var(--object-x), var(--object-y))	
+
+// paperball
+.paperball
+	@include objects(20px, 20px, var(--object-x), var(--object-y))
+	transform-origin: center
+
+// picture
+.picture
+	@include objects(10px, 10px, var(--object-x), var(--object-y))
+	transform-origin: center
+
+// remote
+.remote
+	@include objects(15px, 15px, var(--object-x), var(--object-y))
+
+// secret room path
+.secret-room-closed
+	@include objects(50px, 50px, var(--object-x), var(--object-y))
+	background-color: #ffd5d5
+.secret-room-path
+	@include objects(40px, 40px, var(--object-x), var(--object-y))
+	background-color: #222
 
 // switch
 .switch
 	@include objects(18px, 18px, var(--object-x), var(--object-y))
-
-// table
-.table
-	@include objects(80px, 80px, var(--object-x), var(--object-y))
-
-// cupboard
-.cupboard
-	@include objects(60px, 60px, var(--object-x), var(--object-y))
-
-// cabinet
-.cabinet
-	@include objects(60px, 60px, var(--object-x), var(--object-y))
-
-// key
-.key-vertical
-	@include objects(20px, 20px, var(--object-x), var(--object-y))
-.study-room-key
-	@include objects(20px, 20px, var(--object-x), var(--object-y))
-
-	display: none
-
-// paperball
-.paperball
-	@include objects(10px, 10px, var(--object-x), var(--object-y))
+.power-switch
+	@include objects(30px, 30px, var(--object-x), var(--object-y))
+	transition: none
 	transform-origin: center
-	transition: all .5s ease
-
-// spray
-.living-room-shelf
-	@include objects(70px, 70px, var(--object-x), var(--object-y))
 
 // spray
 .spray
@@ -312,6 +383,14 @@ body
 // sofa
 .sofa
 	@include objects(70px, 70px, var(--object-x), var(--object-y))
+
+// symbol
+.symbol-part
+	@include objects(10px, 20px, var(--object-x), var(--object-y))
+
+// table
+.table
+	@include objects(80px, 80px, var(--object-x), var(--object-y))
 
 // trash-bin
 .trash-bin
@@ -322,6 +401,9 @@ body
 // TV
 .tv
 	@include objects(50px, 50px, var(--object-x), var(--object-y))
+.tv-screen
+	@include objects(41px, 25px, var(--object-x), var(--object-y))
+	background-color: #222
 
 // vase
 .vase
@@ -366,6 +448,8 @@ body
 		display: none
 	.message-trigger-kitchen-turn-on
 		height: 94px
+	.scene-1-nav-2 label:last-child
+		display: inline
 
 // interaction with locked door
 .bedroom-door-locked-radio:checked ~ .scene-1-room-1
@@ -420,6 +504,22 @@ body
 
 // take the mouse spray
 .bedroom-mouse-spray-item-radio:checked
+	// kill mouse using mouse spray
+	~ .kitchen-kill-mouse-radio:checked
+		~ .scene-1-room-2
+			.mouse
+				transform: rotateX(180deg)
+				animation: none
+			.study-room-key
+				display: block
+			.message-trigger-kitchen-mouse-died
+				height: 94px
+		~ .items-board
+			.item-mouse-spray-block
+				display: none !important
+		~ .item-mouse-spray-description
+			height: 0 !important
+
 	~ .scene-1-room-1
 		.mouse-spray
 			transform: scale(0)
@@ -441,6 +541,24 @@ body
 		.item-bedroom-key-block
 			display: none !important
 	~ .bedroom-key-description
+		height: 0 !important
+
+// place the hat into the hat stand
+//// and unlock the secret door
+.bedroom-place-hat-radio:checked
+	~ .scene-1-room-1
+		.hat-stand-action
+			display: none
+		.hat-on-stand
+			transform: scale(1) rotateZ(-25deg)
+		.secret-room-closed
+			left: 90px
+		.message-trigger-secret-room-unlocked
+			height: 94px
+	~ .items-board
+		.item-hat-block
+			display: none !important
+	~ .item-hat-description
 		height: 0 !important
 
 // turn on the kitchen stove
@@ -540,60 +658,313 @@ body
 	~ .item-fish-bone-trash-description
 		height: 0 !important
 
-// kill mouse using mouse spray
-.kitchen-kill-mouse-radio:checked
-	~ .scene-1-room-2
-		.mouse
-			transform: rotateX(180deg)
-			animation: none
-		.study-room-key
-			display: block
-		.message-trigger-kitchen-mouse-died
-			height: 94px
-	~ .items-board
-		.item-mouse-spray-block
-			display: none !important
-	~ .item-mouse-spray-description
-		height: 0 !important
-
-.kitchen-take-study-room-key-radio:checked
+// take the study room key
+.kitchen-item-study-room-key-radio:checked
 	~ .scene-1-room-2
 		.study-room-key
 			transform: scale(0)
 		.message-trigger-kitchen-got-key
 			height: 94px
-	~ .items-board .item-study-room-key-block
+	~ .scene-1-room-3
+		.living-room-door-locked
+			display: none
+	~ .items-board
+		.item-study-room-key-block
+			display: block
+
+// take the battery
+//// inside the cupboard
+.kitchen-item-battery-radio:checked
+	~ .scene-1-room-2
+		.battery
+			transform: scale(0)
+		.message-trigger-kitchen-got-symbol-part
+			height: 94px
+	~ .items-board .item-battery-block
+		display: block
+	~ .scene-1-room-3
+		.remote-not-working
+			display: none
+
+// take the symbol part (left)
+//// inside the cupboard
+.kitchen-item-symbol-part-radio:checked
+	~ .scene-1-room-2
+		.symbol-part
+			transform: scale(0)
+		.message-trigger-kitchen-got-battery
+			height: 94px
+	~ .items-board .item-symbol-part-1-block
+		display: block
+
+// open the cabinet 1 in the kitchen
+.kitchen-open-cabinet-1-radio:checked
+	~ .scene-1-room-2
+		.cabinet-1
+			display: none
+	~ .items-board
+		.item-cupboard-key-block
+			display: none !important
+
+// take paper inside the cupboard
+.bedroom-paper-2-item-radio:checked
+	~ .scene-1-room-1
+		.paperball-cupboard
+			transform: scale(0)
+	~ .items-board
+		.item-paperball-2-block
+			display: block
+
+// switch the curtain in living room
+.living-room-curtain-checkbox:checked
+	~ .scene-1-room-3 .curtain
+		display: none
+
+// switch the TV screen in living room
+.living-room-tv-screen-checkbox:checked
+	~ .scene-1-room-3 .tv-screen
+		background-color: #469eff
+
+		.chest-key
+			display: block
+
+// take chest key inside the cabinet
+.living-room-item-chest-key-radio:checked
+	~ .scene-1-room-3
+		.chest-key
+			transform: scale(0)
+	~ .scene-1-room-5
+		.chest-locked
+			display: none
+	~ .items-board
+		.item-chest-key-block
+			display: block
+
+// interaction with living room locked door
+.living-room-door-locked-radio:checked ~ .scene-1-room-3
+	.message-trigger-living-room-study-room-door-locked
+		height: 94px
+
+// interaction with remote not working
+.living-room-remote-not-working-radio:checked ~ .scene-1-room-3
+	.message-trigger-living-room-remote-not-working
+		height: 94px
+
+// take the picture of Wendo
+.living-room-item-picture-radio:checked ~ .scene-1-room-3
+	.picture
+		transform: scale(0)
+	.message-trigger-living-room-take-picture-of-wendo
+		height: 94px
+	~ .items-board
+		.item-picture-block
+			display: block
+
+// take the living room document #1
+.living-room-item-document-1-radio:checked ~ .scene-1-room-3
+	.living-room-document-1
+		transform: scale(0)
+	~ .items-board
+		.item-living-room-document-1-block
+			display: block
+
+// take hat in the living room
+.living-room-item-hat-radio:checked
+	~ .scene-1-room-1
+		.hat-stand-action
+			display: block
+	~ .scene-1-room-3
+		.hat
+			transform: scale(0)
+		.message-trigger-hat-taken
+			height: 94px
+	~ .items-board
+		.item-hat-block
+			display: block
+
+// place battery to the remote
+.living-room-remote-place-battery-radio:checked
+	~ .scene-1-room-3
+		.remote-place-battery
+			display: none
+		
+		.message-trigger-living-room-battery-plugged
+			height: 94px
+	~ .items-board
+		.item-battery-block
+			display: none !important
+	~ .item-battery-description
+		height: 0 !important
+
+// take remote in the living room
+.living-room-item-remote-radio:checked
+	~ .scene-1-room-3
+		.remote
+			transform: scale(0)
+		.tv-screen
+			display: block
+	~ .items-board
+		.item-remote-block
+			display: block
+
+// unlock the living room right door
+.living-room-unlock-door-radio:checked
+	~ .scene-1-room-3
+		.door-right-side
+			transform: skewY(68deg) rotateY(80deg)
+		
+		.message-trigger-living-room-study-room-door-unlocked
+			height: 94px
+	~ .items-board
+		.item-study-room-key-block
+			display: none !important
+	~ .item-study-room-key-description
+		height: 0 !important
+
+// unlock the main door
+.living-room-unlock-main-door-radio:checked
+	~ .scene-1-room-3
+		.door-front-trigger
+			transform-origin: left bottom
+			transform: skewY(25deg) rotateY(45deg)
+		
+		.message-trigger-living-room-main-door-unlocked
+			height: 94px
+	~ .items-board
+		.item-front-door-key-block
+			display: none !important
+	~ .item-front-door-key-description
+		height: 0 !important
+
+// take cupboard key in the study room
+.study-room-item-cupboard-key-radio:checked
+	~ .scene-1-room-2
+		.cabinet-1-locked
+			display: none
+	~ .scene-1-room-4
+		.cupboard-key
+			transform: scale(0)
+		.message-trigger-hat-taken
+			height: 94px
+	~ .items-board
+		.item-cupboard-key-block
+			display: block
+
+// place the symbol parts
+.study-room-put-symbol-part-1-radio:checked
+	~ .scene-1-room-4
+		.emblem-put-left-installed
+			display: block
+	~ .items-board
+		.item-symbol-part-1-block
+			display: none !important
+	~ .item-symbol-part-1-description
+		height: 0 !important
+.study-room-put-symbol-part-2-radio:checked
+	~ .scene-1-room-4
+		.emblem-put-right-installed
+			display: block
+	~ .items-board
+		.item-symbol-part-2-block
+			display: none !important
+	~ .item-symbol-part-2-description
+		height: 0 !important
+
+.study-room-put-symbol-part-1-radio:checked
+	~ .study-room-put-symbol-part-2-radio:checked
+		~ .scene-1-room-4
+			.bookshelf
+				left: 160px
+			.message-trigger-study-room-bookshelf-opened
+				height: 94px
+
+// take the front door key
+.study-room-item-front-door-key-radio:checked
+	~ .scene-1-room-3
+		.front-door-locked
+			display: none
+	~ .scene-1-room-4
+		.front-door-key
+			transform: scale(0)
+		.door-right-side-locked
+			display: none
+		.message-trigger-study-room-front-door-key-taken
+			height: 94px
+	~ .items-board
+		.item-front-door-key-block
+			display: block
+
+// switch power on at secret room
+.secret-room-turn-on-power-radio:checked
+	~ .scene-1-room-4
+		.room-dark
+			display: none
+		.message-trigger-study-room-turn-on
+			height: 94px
+	~ .scene-1-room-5
+		.power-switch
+			transform: rotateX(180deg)
+		.message-trigger-secret-room-switch-power
+			height: 94px
+
+// interaction with locked chest
+.secret-room-chest-locked-radio:checked ~ .scene-1-room-5
+	.message-trigger-secret-room-chest-locked
+		height: 94px
+
+// unlock the treasure chest
+.secret-room-chest-unlocked-radio:checked
+	~ .scene-1-room-5
+		.chest
+			display: none
+		.chest-open
+			display: block
+		
+		.message-trigger-secret-room-chest-unlocked
+			height: 94px
+	~ .items-board
+		.item-chest-key-block
+			display: none !important
+	~ .item-chest-key-description
+		height: 0 !important
+
+// take the symbol part (right)
+//// inside the chest
+.secret-room-item-symbol-part-2-radio:checked
+	~ .scene-1-room-5
+		.symbol-part
+			transform: scale(0)
+		.message-trigger-secret-room-got-symbol-part
+			height: 94px
+	~ .items-board .item-symbol-part-2-block
 		display: block
 
 // show description for each item obtained
+// ITEMS IN BEDROOM
 .bedroom-paperball-1-description-radio:checked
 	~ .paperball-1-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-paperball-1-block
 		background-color: #eee
-
 .bedroom-paperball-2-description-radio:checked
 	~ .paperball-2-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-paperball-2-block
 		background-color: #eee
-
 .bedroom-key-description-radio:checked
 	~ .bedroom-key-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-bedroom-key-block
 		background-color: #eee
-
 .item-fingerprint-description-radio:checked
 	~ .item-fingerprint-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-fingerprint-block
 		background-color: #eee
-
 .item-mouse-spray-description-radio:checked
 	~ .item-mouse-spray-description
 		height: 100px
@@ -601,39 +972,83 @@ body
 	~ .items-board .item-mouse-spray-block
 		background-color: #eee
 
+// ITEMS IN KITCHEN
 .item-paperball-1-trash-description-radio:checked
 	~ .item-paperball-1-trash-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-paperball-1-trash-block
 		background-color: #eee
-
 .item-paperball-2-trash-description-radio:checked
 	~ .item-paperball-2-trash-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-paperball-2-trash-block
 		background-color: #eee
-
 .item-can-trash-description-radio:checked
 	~ .item-can-trash-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-can-trash-block
 		background-color: #eee
-
 .item-fish-bone-trash-description-radio:checked
 	~ .item-fish-bone-trash-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-fish-bone-trash-block
 		background-color: #eee
-
 .item-study-room-key-description-radio:checked
 	~ .item-study-room-key-description
 		height: 100px
 		overflow-y: auto
 	~ .items-board .item-study-room-key-block
+		background-color: #eee
+
+// ITEMS IN LIVING ROOM
+.item-picture-description-radio:checked
+	~ .item-picture-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-picture-block
+		background-color: #eee
+.item-living-room-document-1-description-radio:checked
+	~ .item-living-room-document-1-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-living-room-document-1-block
+		background-color: #eee
+.item-hat-description-radio:checked
+	~ .item-hat-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-hat-block
+		background-color: #eee
+.item-remote-description-radio:checked
+	~ .item-remote-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-remote-block
+		background-color: #eee
+.item-chest-key-description-radio:checked
+	~ .item-chest-key-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-chest-key-block
+		background-color: #eee
+
+// ITEMS IN STUDY ROOM
+.item-cupboard-key-description-radio:checked
+	~ .item-cupboard-key-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-cupboard-key-block
+		background-color: #eee
+
+.item-front-door-key-description-radio:checked
+	~ .item-front-door-key-description
+		height: 100px
+		overflow-y: auto
+	~ .items-board .item-front-door-key-block
 		background-color: #eee
 
 .item-battery-description-radio:checked
@@ -657,12 +1072,7 @@ body
 	~ .items-board .item-symbol-part-2-block
 		background-color: #eee
 
-.item-remote-description-radio:checked
-	~ .item-remote-description
-		height: 100px
-		overflow-y: auto
-	~ .items-board .item-remote-block
-		background-color: #eee
+
 
 // -----------------------------
 // ITEMS
@@ -720,10 +1130,11 @@ body
 	top: calc(-1em - 118px)
 	left: 0
 
-
 .message-trigger-bedroom-turn-off,
 .message-trigger-kitchen-turn-off,
-.message-trigger-living-room-first-time
+.message-trigger-living-room-first-time,
+.message-trigger-study-room-turn-off,
+.message-trigger-secret-room-first-time
 	height: 94px
 
 // -----------------------------
