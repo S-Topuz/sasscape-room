@@ -13,8 +13,8 @@
 - Sass
 
 ## link for demo
-- [Play on GitHub Pages](https://daimessdn.github.io/escape-room)
-- [Play on itch.io](https://daimessdn.itch.io/escape-room)
+- [Play on GitHub Pages](https://daimessdn.github.io/sasscape-room)
+- [Play on itch.io](https://daimessdn.itch.io/sasscape-room)
 
 ## peek me on
 - [Twitter](https://twitter.com/daimessdn)
