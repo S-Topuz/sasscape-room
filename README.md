@@ -14,7 +14,7 @@
 
 ## link for demo
 - [Play on GitHub Pages](https://daimessdn.github.io/escape-room)
-- Play on itch.io (not released yet)
+- [Play on itch.io](https://daimessdn.itch.io/escape-room)
 
 ## peek me on
 - [Twitter](https://twitter.com/daimessdn)
