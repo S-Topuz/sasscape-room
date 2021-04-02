@@ -249,6 +249,10 @@
 
 			<!-- study room interaction radio -->
 			<input type="radio"
+			       class="trigger-radio study-room-check-empty-symbol-radio"
+			       name="study-room-check-empty-symbol-event"
+			       id="study-room-check-empty-symbol-event">
+			<input type="radio"
 			       class="trigger-radio study-room-put-symbol-part-1-radio"
 			       name="study-room-put-symbol-part-1-event"
 			       id="study-room-put-symbol-part-1-event">
@@ -272,7 +276,7 @@
 			       class="trigger-radio secret-room-turn-on-power-radio"
 			       name="secret-room-turn-on-power-event"
 			       id="secret-room-turn-on-power-event">
-      <input type="radio"
+      		<input type="radio"
 			       class="trigger-radio secret-room-chest-locked-radio"
 			       name="secret-room-chest-locked-event"
 			       id="secret-room-chest-locked-event">
@@ -652,15 +656,19 @@
 				<div class="room-message-board message-trigger-kitchen-turn-off">
 					<span>Aw, come on! Don't this room again<span class="last">!</span></span>
 				</div>
+				
 				<div class="room-message-board message-trigger-kitchen-turn-on">
 					<span>Lights on! Oh, look at this mess. Seems that it's cleaning up time<span class="last">.</span></span>
 				</div>
+				
 				<div class="room-message-board message-trigger-kitchen-all-trash-collected">
 					<span>All clear now! Now, let's put all the trash into the bin<span class="last">.</span></span>
 				</div>
+				
 				<div class="room-message-board message-trigger-kitchen-all-trash-put">
 					<span>All trash have been put into the trash bin. But, wait! A mouse. It brings some key. I wonder how to take the key from it<span class="last">.</span></span>
 				</div>
+				
 				<div class="room-message-board message-trigger-kitchen-mouse-died">
 					<span>Thanks for the mouse spray, the mouse has been died. The key is dropped from it<span class="last">.</span></span>
 				</div>
@@ -668,9 +676,11 @@
 				<div class="room-message-board message-trigger-kitchen-got-key">
 					<span>I got some key from the mouse. I wonder what kind of room or something I can open<span class="last">.</span></span>
 				</div>
+
 				<div class="room-message-board message-trigger-kitchen-got-battery">
 					<span>I've got the battery. Seems I can make something work with this<span class="last">.</span></span>
 				</div>
+				
 				<div class="room-message-board message-trigger-kitchen-got-symbol-part">
 					<span>I've got the left part of Wendo emblem. Let's find another left<span class="last">.</span></span>
 				</div>
@@ -682,7 +692,6 @@
 		       name="scene-1-room"
 		       id="scene-1-room-3" />
 			<div class="scene-1-room scene-1-room-3">
-
 				<div class="scene-1-label">
 					Living Roo<span class="last">m</span>
 				</div>
@@ -720,7 +729,6 @@
 				       style="--object-x: 25px; --object-y: 100px">
 					<img src="assets/objects/window.svg" alt />
 				</label>
-
 				<label class="curtain"
 							 for="living-room-curtain"
 				       style="--object-x: 20px; --object-y: 92px">
@@ -739,7 +747,7 @@
 							       style="--object-x: 11px; --object-y: 3px">
 								<img src="assets/objects/chest-key.svg" alt />
 							</label> 	
-				 </label>
+				</label>
 
 				<div class="living-room-shelf"
 				       style="--object-x: 190px; --object-y: 186px">
@@ -822,6 +830,7 @@
 				<div class="room-message-board message-trigger-living-room-battery-plugged">
 					<span>The battery is now on remote. Now I can use the remote<span class="last">.</span></span>
 				</div>
+				
 				<div class="room-message-board message-trigger-living-room-main-door-unlocked">
 					<span>Horray! The main door is unlocked. Now it's time for escape<span class="last">.</span></span>
 				</div>
@@ -887,13 +896,15 @@
 							 for="study-room-put-symbol-part-2-event"
 				       style="--object-x: 210px; --object-y: 189px">
 				</label>
-				<div class="emblem-put emblem-put-right-installed"
-			       style="--object-x: 210px; --object-y: 189px">
-			       <img src="assets/objects/symbol-part-2.svg" alt />
-				</div>
-				<div class="emblem-put emblem-put-right-locked"
-			       style="--object-x: 210px; --object-y: 189px">
-				</div>
+				<label class="emblem-put emblem-put-right-installed"
+				       for="study-room-check-empty-symbol-event"
+			           style="--object-x: 210px; --object-y: 189px">
+			        <img src="assets/objects/symbol-part-2.svg" alt />
+				</label>
+				<label class="emblem-put emblem-put-right-locked"
+				       for="study-room-check-empty-symbol-event"
+			           style="--object-x: 210px; --object-y: 189px">
+				</label>
 
 				<label class="key cupboard-key"
 				       for="study-room-item-cupboard-key"
@@ -908,6 +919,12 @@
 				</div>
 				<div class="room-message-board message-trigger-study-room-turn-on">
 					<span>Power's back! Now let's explore some stuffs here<span class="last">.</span></span>
+				</div>
+				<div class="room-message-board message-trigger-study-room-got-cupboard-key">
+					<span>I've got another key. Based on this key color, this key seems not to be a room key<span class="last">.</span></span>
+				</div>
+				<div class="room-message-board message-trigger-check-symbol-on-book">
+					<span>This book has a lost symbol in it. Maybe I need to put something in it<span class="last">.</span></span>
 				</div>
 				<div class="room-message-board message-trigger-study-room-bookshelf-opened">
 					<span>After I placed the Wendo emblem pieces, suddenly the bookshelf is opened. I also saw a key there<span class="last">.</span></span>
@@ -966,7 +983,7 @@
 					<span>The chest is locked. I wonder if I can open it and get a gold<span class="last">.</span></span>
 				</div>
 				<div class="room-message-board message-trigger-secret-room-chest-unlocked">
-					<span>Ay, Ay! Captain. We've got the treasure! I hope there's a golden doublin there.<span class="last">.</span></span>
+					<span>Ay, Ay! Captain. We've got the treasure! I hope there's a golden doublin there<span class="last">.</span></span>
 				</div>
 				<div class="room-message-board message-trigger-secret-room-got-symbol-part">
 					<span>I've got the right part of Wendo emblem. Maybe there's nothing more in this chest<span class="last">.</span></span>
@@ -1168,6 +1185,8 @@
 					<br />
 					<em>
 						Wendo is the a symbol that will be the one key for you to escape. There are two pieces of symbol, left part and right part. One part is located on the cupboard (I don't know which cupboard), and I forgot where's another pieces located. The rest of the symbol piece will be your homework to find it.<br />
+						<br />
+						Good luck!<br />
 						<br />
 						Letter code: #1823
 					</em>

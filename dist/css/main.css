@@ -1011,7 +1011,7 @@ body {
 
 .kitchen-item-battery-radio:checked ~ .scene-1-room-2 .battery {
   transform: scale(0); }
-.kitchen-item-battery-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-symbol-part {
+.kitchen-item-battery-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-battery {
   height: 94px; }
 .kitchen-item-battery-radio:checked ~ .items-board .item-battery-block {
   display: block; }
@@ -1020,7 +1020,7 @@ body {
 
 .kitchen-item-symbol-part-radio:checked ~ .scene-1-room-2 .symbol-part {
   transform: scale(0); }
-.kitchen-item-symbol-part-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-battery {
+.kitchen-item-symbol-part-radio:checked ~ .scene-1-room-2 .message-trigger-kitchen-got-symbol-part {
   height: 94px; }
 .kitchen-item-symbol-part-radio:checked ~ .scene-1-room-4 .emblem-put-left-locked {
   display: none; }
@@ -1031,6 +1031,8 @@ body {
   display: none; }
 .kitchen-open-cabinet-1-radio:checked ~ .items-board .item-cupboard-key-block {
   display: none !important; }
+.kitchen-open-cabinet-1-radio:checked ~ .item-cupboard-key-description {
+  height: 0 !important; }
 
 .bedroom-paper-2-item-radio:checked ~ .scene-1-room-1 .paperball-cupboard {
   transform: scale(0); }
@@ -1120,10 +1122,13 @@ body {
   display: none; }
 .study-room-item-cupboard-key-radio:checked ~ .scene-1-room-4 .cupboard-key {
   transform: scale(0); }
-.study-room-item-cupboard-key-radio:checked ~ .scene-1-room-4 .message-trigger-hat-taken {
+.study-room-item-cupboard-key-radio:checked ~ .scene-1-room-4 .message-trigger-study-room-got-cupboard-key {
   height: 94px; }
 .study-room-item-cupboard-key-radio:checked ~ .items-board .item-cupboard-key-block {
   display: block; }
+
+.study-room-check-empty-symbol-radio:checked ~ .scene-1-room-4 .message-trigger-check-symbol-on-book {
+  height: 94px; }
 
 .study-room-put-symbol-part-1-radio:checked ~ .scene-1-room-4 .emblem-put-left-installed {
   display: block; }

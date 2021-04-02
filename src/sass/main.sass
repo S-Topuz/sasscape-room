@@ -681,7 +681,7 @@ body
 	~ .scene-1-room-2
 		.battery
 			transform: scale(0)
-		.message-trigger-kitchen-got-symbol-part
+		.message-trigger-kitchen-got-battery
 			height: 94px
 	~ .items-board .item-battery-block
 		display: block
@@ -695,7 +695,7 @@ body
 	~ .scene-1-room-2
 		.symbol-part
 			transform: scale(0)
-		.message-trigger-kitchen-got-battery
+		.message-trigger-kitchen-got-symbol-part
 			height: 94px
 	~ .scene-1-room-4
 		.emblem-put-left-locked
@@ -711,6 +711,8 @@ body
 	~ .items-board
 		.item-cupboard-key-block
 			display: none !important
+	~ .item-cupboard-key-description
+		height: 0 !important
 
 // take paper inside the cupboard
 .bedroom-paper-2-item-radio:checked
@@ -734,7 +736,7 @@ body
 		.chest-key
 			display: block
 
-// take chest key inside the cabinet
+// take chest key inside the TV
 .living-room-item-chest-key-radio:checked
 	~ .scene-1-room-3
 		.chest-key
@@ -851,11 +853,18 @@ body
 	~ .scene-1-room-4
 		.cupboard-key
 			transform: scale(0)
-		.message-trigger-hat-taken
+		.message-trigger-study-room-got-cupboard-key
 			height: 94px
+
 	~ .items-board
 		.item-cupboard-key-block
 			display: block
+
+// interaction with empty symbol on book
+.study-room-check-empty-symbol-radio:checked
+	~ .scene-1-room-4
+		.message-trigger-check-symbol-on-book
+			height: 94px
 
 // place the symbol parts
 .study-room-put-symbol-part-1-radio:checked
