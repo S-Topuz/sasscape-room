@@ -16,6 +16,12 @@
 - [Play on GitHub Pages](https://daimessdn.github.io/sasscape-room)
 - [Play on itch.io](https://daimessdn.itch.io/sasscape-room)
 
+## contributing section
+You can read [CONTRIBUTING](https://github.com/daimessdn/sasscape-room/blob/master/CONTRIBUTING.md) section before starting contributions.
+
+## follow up issues
+You can starting you issues [here](https://daimessdn.github.io/sasscape-room/issues)
+
 ## peek me on
 - [Twitter](https://twitter.com/daimessdn)
 - [LinkedIn](https://linkedin.com/in/dimaswehhh)
