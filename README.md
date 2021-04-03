@@ -1,6 +1,6 @@
-# sasscape-room
+# SASSCAPE ROOM
 
-**sasscape-room** is a web-based escape room game using Sass.
+**SASSCAPE ROOM** is a web-based escape room game using Sass.
 
 ## game features
 - Consists of multiple rooms
