@@ -192,6 +192,15 @@ body {
 .ending-label {
   display: block;
   margin: 16px; }
+  .intro-label a,
+  .instruction-label a,
+  .prolog-label a,
+  .ending-label a {
+    border: 1px solid #eee;
+    color: #eee;
+    text-decoration: none;
+    padding: 4px;
+    display: inline-block; }
 
 .last {
   animation: blink 0.5s ease infinite; }
