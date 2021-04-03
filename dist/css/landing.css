@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@font-face {
+  font-family: "UAV OSD Mono";
+  src: url("../../assets/fonts/UAV-OSD-Sans-Mono.ttf"); }
 * {
   box-sizing: border-box; }
 
@@ -8,7 +10,7 @@ html, body {
   scroll-behavior: smooth; }
 
 body {
-  font-family: "Major Mono Display";
+  font-family: "UAV OSD Mono";
   font-variant-ligatures: none;
   background-color: #222;
   color: #eee;
@@ -84,7 +86,7 @@ section {
   padding: 5px;
   margin: 5px;
   cursor: pointer;
-  font-family: "Major Mono Display";
+  font-family: "UAV OSD Mono";
   font-size: 0.85em;
   text-decoration: none; }
 
