@@ -60,13 +60,22 @@ body {
   transform: rotateY(90deg);
   transition: all 1s ease; }
   .scene-1-room-1 .scene-1-nav-1 {
+    float: right;
     background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
-    left: 260px;
-    width: 40px;
+    left: 240px;
+    width: 60px;
     text-align: right; }
+    .scene-1-room-1 .scene-1-nav-1 input[type="reset"] {
+      font: 1em "UAV OSD Mono";
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #eee; }
+    .scene-1-room-1 .scene-1-nav-1 * {
+      padding: 3px; }
 
 .scene-1-room-2 {
   background-color: var(--background2);
@@ -79,13 +88,22 @@ body {
   transform: rotateY(90deg);
   transition: all 1s ease; }
   .scene-1-room-2 .scene-1-nav-2 {
+    float: right;
     background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
-    left: 260px;
-    width: 40px;
+    left: 240px;
+    width: 60px;
     text-align: right; }
+    .scene-1-room-2 .scene-1-nav-2 input[type="reset"] {
+      font: 1em "UAV OSD Mono";
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #eee; }
+    .scene-1-room-2 .scene-1-nav-2 * {
+      padding: 3px; }
 
 .scene-1-room-3 {
   background-color: var(--background3);
@@ -98,13 +116,22 @@ body {
   transform: rotateY(90deg);
   transition: all 1s ease; }
   .scene-1-room-3 .scene-1-nav-3 {
+    float: right;
     background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
-    left: 260px;
-    width: 40px;
+    left: 240px;
+    width: 60px;
     text-align: right; }
+    .scene-1-room-3 .scene-1-nav-3 input[type="reset"] {
+      font: 1em "UAV OSD Mono";
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #eee; }
+    .scene-1-room-3 .scene-1-nav-3 * {
+      padding: 3px; }
 
 .scene-1-room-4 {
   background-color: var(--background4);
@@ -117,13 +144,22 @@ body {
   transform: rotateY(90deg);
   transition: all 1s ease; }
   .scene-1-room-4 .scene-1-nav-4 {
+    float: right;
     background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
-    left: 260px;
-    width: 40px;
+    left: 240px;
+    width: 60px;
     text-align: right; }
+    .scene-1-room-4 .scene-1-nav-4 input[type="reset"] {
+      font: 1em "UAV OSD Mono";
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #eee; }
+    .scene-1-room-4 .scene-1-nav-4 * {
+      padding: 3px; }
 
 .scene-1-room-5 {
   background-color: var(--background5);
@@ -136,13 +172,22 @@ body {
   transform: rotateY(90deg);
   transition: all 1s ease; }
   .scene-1-room-5 .scene-1-nav-5 {
+    float: right;
     background-color: #222;
     color: #eee;
     position: absolute;
     top: calc(-1em - 12px);
-    left: 260px;
-    width: 40px;
+    left: 240px;
+    width: 60px;
     text-align: right; }
+    .scene-1-room-5 .scene-1-nav-5 input[type="reset"] {
+      font: 1em "UAV OSD Mono";
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #eee; }
+    .scene-1-room-5 .scene-1-nav-5 * {
+      padding: 3px; }
 
 .scene-1-room-radio:checked + .scene-1-room {
   transform: rotateY(0deg);
@@ -154,7 +199,7 @@ body {
   width: var(--width);
   background-color: rgba(0, 0, 0, 0.95); }
 
-.scene-1-nav-1,
+.scene-1-nav-1 label:last-child,
 .scene-1-nav-2 label:last-child,
 .scene-1-nav-3 label:last-child {
   display: none; }
@@ -917,7 +962,7 @@ body {
   transform: skewY(68deg) rotateY(80deg); }
 .open-door-event-radio:checked ~ .scene-1-room-1 .message-trigger-bedroom-unlocked {
   height: 94px; }
-.open-door-event-radio:checked ~ .scene-1-room-1 .scene-1-nav-1 {
+.open-door-event-radio:checked ~ .scene-1-room-1 .scene-1-nav-1 label:last-child {
   display: inline; }
 .open-door-event-radio:checked ~ .items-board .item-bedroom-key-block {
   display: none !important; }

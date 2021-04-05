@@ -109,15 +109,26 @@ body
     transition: all 1s ease
 
     .scene-1-nav-#{$i}
+      float: right
       background-color: #222
       color: #eee
 
       position: absolute
       top: calc(-1em - 12px)
-      left: 260px
+      left: 240px
       
-      width: 40px
+      width: 60px
       text-align: right
+
+      input[type="reset"]
+        font: 1em "UAV OSD Mono"
+        border: none
+        outline: none
+        background-color: #222
+        color: #eee
+
+      *
+        padding: 3px
 
 // room switcher for scene 1
 .scene-1-room-radio:checked
@@ -133,7 +144,7 @@ body
 
   background-color: rgba(0, 0, 0, .95)
 
-.scene-1-nav-1,
+.scene-1-nav-1 label:last-child,
 .scene-1-nav-2 label:last-child,
 .scene-1-nav-3 label:last-child
   display: none
@@ -530,7 +541,7 @@ body
       transform: skewY(68deg) rotateY(80deg)
     .message-trigger-bedroom-unlocked
       height: 94px
-    .scene-1-nav-1
+    .scene-1-nav-1 label:last-child
       display: inline
   ~ .items-board
     .item-bedroom-key-block
