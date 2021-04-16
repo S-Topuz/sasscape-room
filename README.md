@@ -1,5 +1,7 @@
 # SASSCAPE ROOM
 
+![demo image](assets/landing/demo.gif)
+
 **SASSCAPE ROOM** is a web-based escape room game using Sass.
 
 ## game features
